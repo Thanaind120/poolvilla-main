@@ -2,13 +2,13 @@
 <html lang="th">
 <head>      
     <title>Poolvilla</title>
-    <?php require('inc_header.php'); ?> 
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-<link rel="stylesheet" href="css/owl.theme.default.min.css">
-<script src="js/owl.carousel.min.js"></script>
+   @include('frotend/inc_header')
+    <link rel="stylesheet" href="{{asset('assets_frontend/css/owl.carousel.min.css')}}">
+<link rel="stylesheet" href="{{asset('assets_frontend/css/owl.theme.default.min.css')}}">
+<script src="{{asset('assets_frontend/js/owl.carousel.min.js')}}"></script>
 </head>
 <body >
-    <?php require('inc_navbar.php'); ?> 
+   @include('frontend/inc_navbar.php')
     <div class="bg-orange-light2">
         <div class="row g-1">
             <div class="col-lg-2 col-12">
@@ -116,7 +116,7 @@
             <div class="col-sm-4 col-6">
                 <div class="frame-item box-destination">
                     <a href="category_travel.php" class="">          
-                        <img src="images/cities%20(2).jpg" class="img-des">
+                        <img src="{{asset('assets_frontend/images/cities%20(2).jpg')}}" class="img-des">
                         <div class="bottom-left">
                             <p class="name-text text-white">Advanture</p>
                         </div>
@@ -126,7 +126,7 @@
             <div class="col-sm-4 col-6">
                 <div class="frame-item box-destination">
                     <a href="category_travel.php" class="">          
-                        <img src="images/cities%20(3).jpg" class="img-des">
+                        <img src="{{asset('assets_frontend/images/cities%20(3).jpg')}}" class="img-des">
                         <div class="bottom-left">
                             <p class="name-text text-white">Natural</p>
                         </div>
@@ -136,7 +136,7 @@
             <div class="col-sm-4 col-6">
                 <div class="frame-item box-destination">
                     <a href="category_travel.php" class="">          
-                        <img src="images/cities%20(4).jpg" class="img-des">
+                        <img src="{{asset('assets_frontend/images/cities%20(4).jpg')}}" class="img-des">
                         <div class="bottom-left">
                             <p class="name-text text-white">City</p>
                         </div>
@@ -146,7 +146,7 @@
             <div class="col-sm-4 col-6">
                 <div class="frame-item box-destination">
                     <a href="category_travel.php" class="">          
-                        <img src="images/cities%20(5).jpg" class="img-des">
+                        <img src="{{asset('assets_frontend/images/cities%20(5).jpg')}}" class="img-des">
                         <div class="bottom-left">
                             <p class="name-text text-white">Entertainment</p>
                         </div>
@@ -156,7 +156,7 @@
             <div class="col-sm-4 col-6">
                 <div class="frame-item box-destination">
                     <a href="category_travel.php" class="">          
-                        <img src="images/cities%20(6).jpg" class="img-des">
+                        <img src="{{asset('assets_frontend/images/cities%20(6).jpg')}}" class="img-des">
                         <div class="bottom-left">
                             <p class="name-text text-white">Private Tour</p>
                         </div>
@@ -166,7 +166,7 @@
         </div>
     </div>
     <div class="space-footer"></div>
-    <?php require('inc_footer.php'); ?> 
+  @include('frontend/inc_footer')
 </body>
 </html>
 
