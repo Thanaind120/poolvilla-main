@@ -22,6 +22,9 @@ Route::group(['middleware' => ['web','auth']], function () {
     Route::get('/review_hotel', function () {
         return view('frontend.review_hotel');
     });
+      Route::get('/category', function () {
+        return view('frontend.review_hotel');
+    });
     Route::get('/select-hotel/id_country={id_country}/id_city={id}',[FrontendController::class,'get_select_hotel'])->name('select_hotel.get');
     Route::get('/select-hotel', function () {
         return view('frontend.select-hotel');
