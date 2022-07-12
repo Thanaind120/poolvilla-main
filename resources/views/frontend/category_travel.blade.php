@@ -2,13 +2,13 @@
 <html lang="th">
 <head>      
     <title>Poolvilla</title>
-    <?php require('inc_header.php'); ?> 
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-<link rel="stylesheet" href="css/owl.theme.default.min.css">
-<script src="js/owl.carousel.min.js"></script>
+    @include('frontend/inc_header')
+    <link rel="stylesheet" href="{{asset('assets_frontend/css/owl.carousel.min.css')}}">
+<link rel="stylesheet" href="{{asset('assets_frontend/css/owl.theme.default.min.css')}}">
+<script src="{{asset('assets_frontend/js/owl.carousel.min.js')}}"></script>
 </head>
 <body >
-    <?php require('inc_navbar.php'); ?> 
+    @include('frontend/inc_navbar')
     <div class="bg-orange-light2">
         <div class="row g-1">
             <div class="col-lg-2 col-12">
@@ -481,7 +481,7 @@
                     <div class="row g-0">
                         <div class="col-lg-4">
                             <a href="select-rooms.php">
-                                <img src="images/cities%20(5).jpg" class="img-fluid rounded-start" alt="...">
+                                <img src="{{asset('assets_frontend/images/cities%20(5).jpg')}}" class="img-fluid rounded-start" alt="...">
                             </a>
                         </div>
                         <div class="col-lg-8">
@@ -533,7 +533,7 @@
                     <div class="row g-0">
                         <div class="col-lg-4">
                             <a href="select-rooms.php">
-                                <img src="images/cities%20(4).jpg" class="img-fluid rounded-start" alt="...">
+                                <img src="{{asset('assets_frontend/images/cities%20(4).jpg')}}" class="img-fluid rounded-start" alt="...">
                             </a>
                         </div>
                         <div class="col-lg-8">
@@ -585,7 +585,7 @@
                     <div class="row g-0">
                         <div class="col-lg-4">
                             <a href="select-rooms.php">
-                                <img src="images/cities%20(3).jpg" class="img-fluid rounded-start" alt="...">
+                                <img src="{{asset('assets_frontend/images/cities%20(3).jpg')}}" class="img-fluid rounded-start" alt="...">
                             </a>
                         </div>
                         <div class="col-lg-8">
@@ -637,7 +637,7 @@
         </div>
     </div>
     <div class="space-footer"></div>
-    <?php require('inc_footer.php'); ?> 
+    @include('frontend/inc_footer')
 </body>
 </html>
 

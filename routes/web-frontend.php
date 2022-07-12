@@ -18,17 +18,17 @@ Route::group(['middleware' => ['web','auth']], function () {
     //frontend
     Route::get('/',[FrontendController::class,'get_index']);
     Route::get('/index',[FrontendController::class,'get_index']);
+    Route::get('/category',[FrontendController::class,'get_category']);
     Route::get('/tourist_attraction',[FrontendController::class,'get_tourist_attraction']);
+    Route::get('/select-country/{id}',[FrontendController::class,'get_select_country'])->name('select_country.get');
     Route::get('/review_hotel', function () {
         return view('frontend.review_hotel');
     });
-      Route::get('/category', function () {
-        return view('frontend.review_hotel');
-    });
-    Route::get('/select-hotel/id_country={id_country}/id_city={id}',[FrontendController::class,'get_select_hotel'])->name('select_hotel.get');
     Route::get('/select-hotel', function () {
         return view('frontend.select-hotel');
     });
+    Route::get('/select-hotel/id_country={id_country}/id_city={id}',[FrontendController::class,'get_select_hotel'])->name('select_hotel.get'); 
+    Route::get('/select-hotel/search','App\Http\Controllers\FrontendController@country_search')->name('search.get');
     Route::get('/select-rooms', function () {
         return view('frontend.select-rooms');
     });
@@ -41,12 +41,10 @@ Route::group(['middleware' => ['web','auth']], function () {
     Route::get('/booking-3', function () {
         return view('frontend.booking-3');
     });
-    Route::get('/category_travel', function () {
-        return view('frontend.category_travel');
-    });
     Route::get('/category-travel', function () {
         return view('frontend.category_travel');
     });
+    Route::get('/category-travel/id_enjoy={enjoy_id}',[FrontendController::class,'get_category_travel'])->name('category_travel.get');
     Route::get('/mybooking', function () {
         return view('frontend.mybooking');
     });
@@ -64,10 +62,6 @@ Route::group(['middleware' => ['web','auth']], function () {
     Route::get('/tourist_attraction_detail', function () {
         return view('frontend.tourist_attraction_detail');
     });
-    Route::get('/select-country/{id}',[FrontendController::class,'get_select_country'])->name('select_country.get');
-    Route::get('/select-country', function () {
-        return view('frontend.select-country');
-    });
     Route::get('/booking_detail', function () {
         return view('frontend.booking_detail');
     });
@@ -79,23 +73,26 @@ Route::group(['middleware' => ['web','auth']], function () {
 //frontend
 Route::POST('/loging','App\Http\Controllers\LoginController@loging');
 Route::get('/logout','App\Http\Controllers\LoginController@logout');
-Route::get('/',[FrontendController::class,'get_index']);
-Route::get('/index',[FrontendController::class,'get_index']);
-route::get('/tourist_attraction',[FrontendController::class,'get_tourist_attraction']);
-Route::get('/review_hotel', function () {
-    return view('frontend.review_hotel');
+Route::get('/signin', function () {
+    return view('frontend.signin');
 });
 Route::get('/register', function () {
     return view('frontend.register');
 });
 Route::post('/register','App\Http\Controllers\FrontendController@register_member')->name('register.insert');
-Route::get('/signin', function () {
-    return view('frontend.signin');
+Route::get('/',[FrontendController::class,'get_index']);
+Route::get('/index',[FrontendController::class,'get_index']);
+Route::get('/category',[FrontendController::class,'get_category']);
+route::get('/tourist_attraction',[FrontendController::class,'get_tourist_attraction']);
+Route::get('/select-country/{id}',[FrontendController::class,'get_select_country'])->name('select_country.get');
+Route::get('/review_hotel', function () {
+    return view('frontend.review_hotel');
 });
-Route::get('/select-hotel/id_country={id_country}/id_city={id}',[FrontendController::class,'get_select_hotel'])->name('select_hotel.get');
 Route::get('/select-hotel', function () {
     return view('frontend.select-hotel');
 });
+Route::get('/select-hotel/id_country={id_country}/id_city={id}',[FrontendController::class,'get_select_hotel'])->name('select_hotel.get');
+Route::get('/select-hotel/search','App\Http\Controllers\FrontendController@country_search')->name('search.get');
 Route::get('/select-rooms', function () {
     return view('frontend.select-rooms');
 });
@@ -108,12 +105,10 @@ Route::get('/booking-2', function () {
 Route::get('/booking-3', function () {
     return view('frontend.booking-3');
 });
-Route::get('/category_travel', function () {
-    return view('frontend.category_travel');
-});
 Route::get('/category-travel', function () {
     return view('frontend.category_travel');
 });
+Route::get('/category-travel/id_enjoy={enjoy_id}',[FrontendController::class,'get_category_travel'])->name('category_travel.get');
 // Route::get('/mybooking', function () {
 //     return view('frontend.mybooking');
 // });
@@ -128,10 +123,6 @@ Route::get('/promotion', function () {
 });
 Route::get('/tourist_attraction_detail', function () {
     return view('frontend.tourist_attraction_detail');
-});
-Route::get('/select-country/{id}',[FrontendController::class,'get_select_country'])->name('select_country.get');
-Route::get('/select-country', function () {
-    return view('frontend.select-country');
 });
 Route::get('/booking_detail', function () {
     return view('frontend.booking_detail');

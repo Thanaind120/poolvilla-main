@@ -2,13 +2,13 @@
 <html lang="th">
 <head>      
     <title>Poolvilla</title>
-    <?php require('inc_header.php'); ?> 
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-<link rel="stylesheet" href="css/owl.theme.default.min.css">
-<script src="js/owl.carousel.min.js"></script>
+    @include('frontend/inc_header')
+    <link rel="stylesheet" href="{{asset('assets_frontend/css/owl.carousel.min.css')}}">
+<link rel="stylesheet" href="{{asset('assets_frontend/css/owl.theme.default.min.css')}}">
+<script src="{{asset('assets_frontend/js/owl.carousel.min.js')}}"></script>
 </head>
 <body >
-    <?php require('inc_navbar.php'); ?> 
+    @include('frontend/inc_navbar')
     <div class="bg-orange-light2">
         <div class="row g-1">
             <div class="col-lg-2 col-12">
@@ -162,24 +162,24 @@
                     <div class="col-sm-8">
                         <div class="box-grey my-2">
                            <div class="clearfix">
-                               <img src="images/review.svg" class="float-end reviewpage-icon">
+                               <img src="{{asset('assets_frontend/images/review.svg')}}" class="float-end reviewpage-icon">
                             </div>
                             <div class="text-medium text-grey p-3 mt-3"> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </div>
                         </div>
                         <div class="row g-1">
                             <div class="col-sm-3 col-6">
                                 <div class="img-a">
-                                <img src="images/cities%20(1).jpg" style="width:100%" data-bs-toggle="modal" data-bs-target="#popup-img-head">
+                                <img src="{{asset('assets_frontend/images/cities%20(1).jpg')}}" style="width:100%" data-bs-toggle="modal" data-bs-target="#popup-img-head">
                                 </div>
                             </div>
                             <div class="col-sm-3 col-6">
                                 <div class="img-a">
-                                <img src="images/cities%20(2).jpg" style="width:100%" data-bs-toggle="modal" data-bs-target="#popup-img-head">
+                                <img src="{{asset('assets_frontend/images/cities%20(2).jpg')}}" style="width:100%" data-bs-toggle="modal" data-bs-target="#popup-img-head">
                                 </div>
                             </div>
                             <div class="col-sm-3 col-6">
                                 <div class="img-a">
-                                <img src="images/cities%20(3).jpg" style="width:100%" data-bs-toggle="modal" data-bs-target="#popup-img-head">
+                                <img src="{{asset('assets_frontend/images/cities%20(3).jpg')}}" style="width:100%" data-bs-toggle="modal" data-bs-target="#popup-img-head">
                                 </div>
                             </div>
                         </div>
@@ -198,13 +198,15 @@
                     <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
                       <div class="carousel-inner">
                         <div class="carousel-item active">
-                          <img src="images/cities%20(1).jpg" class="d-block w-100" alt="...">
+                          <img src="{{asset('assets_frontend/images/cities%20(1).jpg')}}" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                          <img src="images/cities%20(2).jpg" class="d-block w-100" alt="...">
+                          <img src="{{asset('assets_frontend/images/cities%20(1).jpg')}}" class="d-block w-100" alt="...">
+                          <img src="{{asset('assets_frontend/images/cities%20(2).jpg')}}" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                          <img src="images/cities%20(3).jpg" class="d-block w-100" alt="...">
+                          <img src="{{asset('assets_frontend/images/cities%20(1).jpg')}}" class="d-block w-100" alt="...">
+                          <img src="{{asset('assets_frontend/images/cities%20(3).jpg')}}" class="d-block w-100" alt="...">
                         </div>
                       </div>
                       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
@@ -233,7 +235,8 @@
                     <div class="col-sm-8">
                         <div class="box-grey my-2">
                            <div class="clearfix">
-                               <img src="images/review.svg" class="float-end reviewpage-icon">
+                          <img src="{{asset('assets_frontend/images/cities%20(1).jpg')}}" class="d-block w-100" alt="...">
+                               <img src="{{asset('assets_frontend/images/review.svg')}}" class="float-end reviewpage-icon">
                             </div>
                             <div class="text-medium text-grey p-3 mt-3"> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </div>
                         </div>
@@ -252,24 +255,28 @@
                     <div class="col-sm-8">
                         <div class="box-grey my-2">
                            <div class="clearfix">
-                               <img src="images/review.svg" class="float-end reviewpage-icon">
+                          <img src="{{asset('assets_frontend/images/cities%20(1).jpg')}}" class="d-block w-100" alt="...">
+                               <img src="{{asset('assets_frontend/images/review.svg')}}" class="float-end reviewpage-icon">
                             </div>
                             <div class="text-medium text-grey p-3 mt-3"> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </div>
                         </div>
                         <div class="row g-1">
                             <div class="col-sm-3 col-6">
                                 <div class="img-a">
-                                <img src="images/cities%20(1).jpg" style="width:100%" data-bs-toggle="modal" data-bs-target="#popup-img-head">
+                          <img src="{{asset('assets_frontend/images/cities%20(1).jpg')}}" class="d-block w-100" alt="...">
+                                <img src="{{asset('assets_frontend/images/cities%20(1).jpg')}}" style="width:100%" data-bs-toggle="modal" data-bs-target="#popup-img-head">
                                 </div>
                             </div>
                             <div class="col-sm-3 col-6">
                                 <div class="img-a">
-                                <img src="images/cities%20(2).jpg" style="width:100%" data-bs-toggle="modal" data-bs-target="#popup-img-head">
+                          <img src="{{asset('assets_frontend/images/cities%20(1).jpg')}}" class="d-block w-100" alt="...">
+                                <img src="{{asset('assets_frontend/images/cities%20(2).jpg')}}" style="width:100%" data-bs-toggle="modal" data-bs-target="#popup-img-head">
                                 </div>
                             </div>
                             <div class="col-sm-3 col-6">
                                 <div class="img-a">
-                                <img src="images/cities%20(3).jpg" style="width:100%" data-bs-toggle="modal" data-bs-target="#popup-img-head">
+                          <img src="{{asset('assets_frontend/images/cities%20(1).jpg')}}" class="d-block w-100" alt="...">
+                                <img src="{{asset('assets_frontend/images/cities%20(3).jpg')}}" style="width:100%" data-bs-toggle="modal" data-bs-target="#popup-img-head">
                                 </div>
                             </div>
                         </div>
@@ -288,13 +295,16 @@
                     <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
                       <div class="carousel-inner">
                         <div class="carousel-item active">
-                          <img src="images/cities%20(1).jpg" class="d-block w-100" alt="...">
+                          <img src="{{asset('assets_frontend/images/cities%20(1).jpg')}}" class="d-block w-100" alt="...">
+                          <img src="{{asset('assets_frontend/images/cities%20(1).jpg')}}" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                          <img src="images/cities%20(2).jpg" class="d-block w-100" alt="...">
+                          <img src="{{asset('assets_frontend/images/cities%20(1).jpg')}}" class="d-block w-100" alt="...">
+                          <img src="{{asset('assets_frontend/images/cities%20(2).jpg')}}" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                          <img src="images/cities%20(3).jpg" class="d-block w-100" alt="...">
+                          <img src="{{asset('assets_frontend/images/cities%20(1).jpg')}}" class="d-block w-100" alt="...">
+                          <img src="{{asset('assets_frontend/images/cities%20(3).jpg')}}" class="d-block w-100" alt="...">
                         </div>
                       </div>
                       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
@@ -316,6 +326,6 @@
         
     </div>
         <div class="space-footer"></div>
-    <?php require('inc_footer.php'); ?> 
+        @include('frontend/inc_footer')
 </body>
 </html>

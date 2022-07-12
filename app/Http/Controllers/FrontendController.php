@@ -17,6 +17,7 @@ use App\Models\Frontend\RegisterModel;
 use App\Models\Frontend\PaymentModel;
 use App\Models\Frontend\ImageReviewModel;
 use App\Models\Frontend\ReviewModel;
+use App\Models\Frontend\EnjoyWithModel;
 
 class FrontendController extends Controller
 {
@@ -65,6 +66,21 @@ class FrontendController extends Controller
         return view('frontend.profile')->with('payment', $payment);
     }
 
+    public function get_category()
+    {  
+        $enjoywith = EnjoyWithModel::get();
+        return view('frontend.category')->with('enjoywith', $enjoywith);
+    }
+
+    public function get_category_travel(Request $request,$enjoy_id)
+    {  
+        $_enjoywith = EnjoyWithModel::find($enjoy_id);
+        EnjoyWithModel::find($enjoy_id)->update([
+            'p_view' => $_enjoywith->p_view + 1,
+        ]);
+        return view('frontend.category_travel');
+    }
+
     public function register_member(Request $request)
     {
         $date = date('Y-m-d');
@@ -89,6 +105,46 @@ class FrontendController extends Controller
             ]);
         }
         return redirect("/signin");
+    }
+
+    public function country_search(request $request){
+        $c_from = $request->province;
+        if($c_from == ''){
+
+        }else{
+            $province = $c_from;
+		}
+        $cin_from = $request->ci;
+        if($cin_from == ''){
+            $ci = '01-'.date('m-Y');
+	 	}else{
+            $ci = $cin_from;
+		}
+        $cout_from = $request->co;
+        if($cout_from == ''){
+            $co = date('t-m-Y',strtotime('01-'.date('m-Y')));
+	 	}else{
+            $co = $cout_from;
+		}
+        $a_from = $request->adult;
+        if($a_from == ''){
+
+		}else{
+            $adult = $a_from;
+		}
+        $k_from = $request->kid;
+        if($k_from == ''){
+
+		}else{
+            $kid = $k_from;
+		}
+        $r_from = $request->ro;
+        if($r_from == ''){
+            $ro = 1;
+		}else{
+            $ro = $r_from;
+		}
+        return view('frontend/select-hotel', compact('c_from', 'cin_from', 'cout_from', 'a_from', 'k_from', 'r_from', 'ro'));
     }
 
     public function updated_review(Request $request, $id)
