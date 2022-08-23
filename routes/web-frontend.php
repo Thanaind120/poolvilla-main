@@ -14,7 +14,11 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::group(['middleware' => ['web','auth']], function () {
+Route::get('/backend/login', function () {
+    return view('auth.login');
+});
+
+Route::group(['middleware' => ['member','auth']], function () {
     //frontend
     Route::get('/',[FrontendController::class,'get_index']);
     Route::get('/index',[FrontendController::class,'get_index']);

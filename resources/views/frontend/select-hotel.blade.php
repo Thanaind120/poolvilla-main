@@ -6,7 +6,7 @@
     @include('frontend/inc_header')
     <link rel="stylesheet" href="{{asset('assets_frontend/css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets_frontend/css/owl.theme.default.min.css')}}">
-    <script src="js/owl.carousel.min.js"></script>
+    <script src="{{asset('assets_frontend/js/owl.carousel.min.js')}}"></script>
 </head>
 
 <body>
@@ -151,8 +151,8 @@
                                 <div class="">
                                     <fieldset class="filter-price">
                                         <div class="price-field">
-                                            <input type="range" min="0" max="10000" value="0" id="lower">
-                                            <input type="range" min="100" max="10000" value="10000" id="upper">
+                                            <input type="range" min="0" max="10000" value="0" id="lower" onchange="changeRange()">
+                                            <input type="range" min="100" max="10000" value="10000" id="upper" onchange="changeRange()">
                                         </div>
                                         <div class="price-wrap">
                                             <div class="price-container">
@@ -793,38 +793,55 @@
     var lowerSlider = document.querySelector('#lower');
     var upperSlider = document.querySelector('#upper');
 
-    $('#upper').on('change', function () {
+    function changeRange(){
+        let lower = document.getElementById('lower').value;
+        let upper = document.getElementById('upper').value;
+        console.log({
+            lower: lower, upper: upper
+        })
+        $.ajax({
+                url: "{!! route('search.get') !!}",
+                type: "GET",
+                data: {
+                    lower: lower,
+                    upper: upper
+                },
+                success: function (response) {
 
-        $("#slider").slider({
-            range: true,
-            min: 20000,
-            max: 80000,
-            values: [22000, 25000],
-            slide: function (event, ui) {
+                    // document.getElementById('div').innerHTML = response
+                    $('#emp_table').append(response);
+                }
+         });
+    }
 
-                // Get values
-                var min = ui.values[0];
-                var max = ui.values[1];
-                $('#range').text(min + ' - ' + max);
+    // $("#slider").slider({
+    //     range: true,
+    //     min: 20000,
+    //     max: 80000,
+    //     values: [22000, 25000],
+    //     slide: function (event, ui) {
 
-                // AJAX
-                $.ajax({
-                    url: "{!! url('/backoffice/news/delete/') !!}",
-                    type: "POST",
-                    data: {
-                        min: min,
-                        max: max
-                    },
-                    success: function (response) {
+    //         // Get values
+    //         var min = ui.values[0];
+    //         var max = ui.values[1];
+    //         $('#range').text(min + ' - ' + max);
 
-                        // Updating data
-                        $('#emp_table tr:not(:first)').remove();
-                        $('#emp_table').append(response);
-                    }
-                });
-            }
-        });
-    });
+    //         // AJAX
+    //         $.ajax({
+    //             url: "{!! url('/backoffice/news/delete/') !!}",
+    //             type: "POST",
+    //             data: {
+    //                 min: min,
+    //                 max: max
+    //             },
+    //             success: function (response) {
+
+                    
+    //             }
+    //         });
+    //     }
+    // });
+   
 
     document.querySelector('#two').value = upperSlider.value;
     document.querySelector('#one').value = lowerSlider.value;
