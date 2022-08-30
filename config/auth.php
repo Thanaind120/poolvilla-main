@@ -38,11 +38,11 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
-        ],
-        'member' => [
-            'driver' => 'session',
             'provider' => 'members',
+        ],
+        'partner' => [
+            'driver' => 'session',
+            'provider' => 'partners',
         ],
         'backend' => [
             'driver' => 'session',
@@ -78,13 +78,13 @@ return [
             'model' => App\Models\Frontend\Member::class,
          
         ],
-        'users' => [
+        'partners' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Korn::class,
         ],
         'admins' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Korn::class,
+            'model' => App\Models\User::class,
         ],
 
         // 'users' => [

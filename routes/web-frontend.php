@@ -18,7 +18,7 @@ Route::get('/backend/login', function () {
     return view('auth.login');
 });
 
-Route::group(['middleware' => ['member','auth']], function () {
+Route::group(['middleware' => ['web','auth']], function () {
     //frontend
     Route::get('/',[FrontendController::class,'get_index']);
     Route::get('/index',[FrontendController::class,'get_index']);
@@ -74,7 +74,7 @@ Route::group(['middleware' => ['member','auth']], function () {
     });
 });
 
-//frontend
+// ---------------------------------------- Member Frontend ---------------------------------------- //
 Route::POST('/loging','App\Http\Controllers\LoginController@loging');
 Route::get('/logout','App\Http\Controllers\LoginController@logout');
 Route::get('/signin', function () {
@@ -113,15 +113,6 @@ Route::get('/category-travel', function () {
     return view('frontend.category_travel');
 });
 Route::get('/category-travel/id_enjoy={enjoy_id}',[FrontendController::class,'get_category_travel'])->name('category_travel.get');
-// Route::get('/mybooking', function () {
-//     return view('frontend.mybooking');
-// });
-// Route::get('/profile', function () {
-//     return view('frontend.profile');
-// });
-// Route::get('/review', function () {
-//     return view('frontend.review');
-// });
 Route::get('/promotion', function () {
     return view('frontend.promotion');
 });
@@ -134,5 +125,5 @@ Route::get('/booking_detail', function () {
 Route::get('/tourist_attraction_country', function () {
     return view('frontend.tourist_attraction_country');
 });
-
+// ---------------------------------------- End Member Frontend ---------------------------------------- //
 

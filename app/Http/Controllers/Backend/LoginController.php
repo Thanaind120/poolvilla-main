@@ -23,8 +23,8 @@ class LoginController extends Controller
             }
 
          
-              Auth::login($u);
-              if(auth::user()->position=="admin"||auth::user()->position=="super_admin"){
+              Auth::guard('backend')->login($u);
+              if(auth::guard('backend')->user()->position=="admin"||auth::guard('backend')->user()->position=="super_admin"){
                 return redirect()->to('/backend/index');
               }
              
@@ -34,7 +34,7 @@ class LoginController extends Controller
     }
 
     public function logout(){
-      Auth::logout();
+      Auth::guard('backend')->logout();
 
      
   
