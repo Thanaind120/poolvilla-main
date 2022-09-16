@@ -75,7 +75,7 @@ Route::group(['middleware' => ['web','auth']], function () {
 });
 
 // ---------------------------------------- Member Frontend ---------------------------------------- //
-Route::POST('/loging','App\Http\Controllers\LoginController@loging');
+Route::POST('backend/loging','App\Http\Controllers\backend\LoginController@loging');
 Route::get('/logout','App\Http\Controllers\LoginController@logout');
 Route::get('/signin', function () {
     return view('frontend.signin');
