@@ -10,15 +10,17 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     
-    public function login(Request $r)    {
-    
+    public function loging(Request $r)    {
+ 
             $u=User::where('email',$r->email)->where('status',1)->first();
             if(!$u)
             {
+      
                 return redirect()->back()->with('warning','Email not found!');
             }
      
             if (!Hash::check($r->password, $u->password)) {
+           
                 return redirect()->back()->with('warning','Password is wrong');
             }
 
@@ -29,6 +31,7 @@ class LoginController extends Controller
               }
              
               else{
+           
                   return redirect()->back()->with('warning','Permission denied'); 
               }
     }
