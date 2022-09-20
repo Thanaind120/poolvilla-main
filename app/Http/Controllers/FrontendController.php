@@ -107,43 +107,35 @@ class FrontendController extends Controller
         return redirect("/signin");
     }
 
-    public function country_search(request $request){
-        $c_from = $request->province;
-        if($c_from == ''){
+    public function search(request $request){
 
+        $c_from = $request->province;
+        $cin_from = $request->ci;
+        $cout_from = $request->co;
+        $a_from = $request->adult;
+        $k_from = $request->kid;
+        $r_from = $request->ro;
+        $lower_from = $request->lower;
+        $upper_from = $request->upper;
+        if($c_from == '' || $cin_from == '' || $cout_from == '' || $a_from == '' || $k_from == ''|| $r_from == ''|| $lower_from == '' || $upper_from == ''){
+            $ci = '01-'.date('m-Y');
+            $co = date('t-m-Y',strtotime('01-'.date('m-Y')));
+            $ro = 1;
         }else{
             $province = $c_from;
-		}
-        $cin_from = $request->ci;
-        if($cin_from == ''){
-            $ci = '01-'.date('m-Y');
-	 	}else{
             $ci = $cin_from;
-		}
-        $cout_from = $request->co;
-        if($cout_from == ''){
-            $co = date('t-m-Y',strtotime('01-'.date('m-Y')));
-	 	}else{
             $co = $cout_from;
-		}
-        $a_from = $request->adult;
-        if($a_from == ''){
-
-		}else{
             $adult = $a_from;
-		}
-        $k_from = $request->kid;
-        if($k_from == ''){
-
-		}else{
             $kid = $k_from;
-		}
-        $r_from = $request->ro;
-        if($r_from == ''){
-            $ro = 1;
-		}else{
             $ro = $r_from;
+            if(isset($lower_from) || isset($upper)){
+            $lower = $lower_from;
+            $upper = $upper_from;
+            }
 		}
+        if(isset($lower_from) || isset($upper)){
+            return view('frontend/select-hotel', compact('c_from', 'cin_from', 'cout_from', 'a_from', 'k_from', 'r_from', 'ro', 'lower', 'upper'));
+        }
         return view('frontend/select-hotel', compact('c_from', 'cin_from', 'cout_from', 'a_from', 'k_from', 'r_from', 'ro'));
     }
 
