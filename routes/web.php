@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 // });
 ##### require frontend route #######
 require_once('web-frontend.php');
+require_once('korn-backend.php');
 // Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
