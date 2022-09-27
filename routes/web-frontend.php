@@ -29,10 +29,6 @@ Route::get('/clc', function() {
 	return "Cleared!";
 });
 
-Route::get('/backend/login', function () {
-    return view('auth.login');
-});
-
 // ---------------------------------------- Member Frontend ---------------------------------------- //
 if(Auth::guard('web')->user() != '' || Auth::guard('web')->user() != null){
     Route::group(['middleware' => ['web','auth']], function () {
@@ -144,3 +140,6 @@ if(Auth::guard('web')->user() != '' || Auth::guard('web')->user() != null){
 // ---------------------------------------- End Member Frontend ---------------------------------------- //
 
 Route::POST('backend/loging','App\Http\Controllers\backend\LoginController@loging');
+Route::get('/backend/login', function () {
+    return view('auth.login');
+});
