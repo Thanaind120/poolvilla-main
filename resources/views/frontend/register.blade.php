@@ -32,7 +32,7 @@
                     <div class="mb-3">
                         <label for="exampleFormControlInput4" class="form-label text-orange">Password</label>
                         <input type="password" class="form-control" id="exampleFormControlInput4" name="password_1"
-                            required>
+                        required>
                         <small class="text-light-grey">Use a minimum of 10 characters, including uppercase letters,
                             lowercase letters, and numbers.</small>
                     </div>
@@ -40,9 +40,10 @@
                     <div class="mb-3">
                         <label for="exampleFormControlInput4" class="form-label text-orange">Confirm Password</label>
                         <input type="password" class="form-control" id="exampleFormControlInput4" name="password_2"
-                            required>
+                        required>
                     </div>
                     <button type="submit" id="submit" class="btn-sign">Register</button>
+                    {{-- <a class="btn-sign" href="index.php">Register</a> --}}
                 </form>
                 <div class="box-text-white">
                     <div class="text-grey text-tiny">or countinue with</div>
@@ -51,14 +52,12 @@
                 <div class="row justify-content-center">
                     <div class="col-sm-4">
                         <button class="btn-facebook">
-                            <img src="{{asset('assets_frontend/images/fb.png')}}" class="fb"><span
-                                class="">facebook</span>
+                            <img src="{{asset('assets_frontend/images/fb.png')}}" class="fb"><span class="">facebook</span>
                         </button>
                     </div>
                     <div class="col-sm-4">
                         <button class="btn-gmail">
-                            <img src="{{asset('assets_frontend/images/gmail.png')}}" class="gm"><span
-                                class="">gmail</span>
+                            <img src="{{asset('assets_frontend/images/gmail.png')}}" class="gm"><span class="">gmail</span>
                         </button>
                     </div>
                 </div>
@@ -66,7 +65,7 @@
                         class="text-orange ms-2">Sign in</a></div>
                 <div class="space-footer"></div>
                 <div class="row justify-content-center">
-                    <div class="col-sm-5 col-8 ">
+                    <div class="col-sm-5 col-8">
                         <img src="{{asset('assets_frontend/images/register.svg')}}">
                     </div>
                 </div>

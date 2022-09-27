@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="{{asset('assets_frontend/css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets_frontend/css/owl.theme.default.min.css')}}">
     <script src="{{asset('assets_frontend/js/owl.carousel.min.js')}}"></script>
-
 </head>
 
 <body>
@@ -19,9 +18,9 @@
             <div class="text-banner-index">Get the best Pool Villa around Asia</div>
             <div class="box-search-destination">
                 <form action="{{ route('search.get') }}" method="get" autocomplete="off">
-                    <div class="autocomplete">
-                        <input id="myInput" class="form-control empty orange" type="text" name="province"
-                            id="city" placeholder="&#xF002;  Where  are  you  going ?">
+                    <div class="autocomplete ">
+                        <input id="myInput" class="form-control empty orange" type="text" name="province" id="iconified"
+                            placeholder="&#xF002;  Where  are  you  going ?">
                     </div>
                     <!--<input class="form-control empty orange" type="text" id="iconified" placeholder="&#xF002;  Where  are  you  going ?"aria-label="default input example">-->
                     <div class="row mt-2">
@@ -36,7 +35,8 @@
                                                     <i class="far fa-calendar check-calender"></i>
                                                 </div>
                                                 <div class="col-10">
-                                                    <input type="date" class="form-control orange-check check-in-out" id="check-in" name="ci">
+                                                    <input class="form-control orange-check check-in-out"
+                                                        id="datepicker" type="text" placeholder="mm/dd/yyyy" name="ci">
                                                 </div>
                                             </div>
                                         </div>
@@ -48,7 +48,8 @@
                                                 <i class="far fa-calendar check-calender"></i>
                                             </div>
                                             <div class="col-10">
-                                                <input type="date" class="form-control orange-check check-in-out" id="check-in" name="co">
+                                                <input class="form-control orange-check check-in-out" id="datepicker2"
+                                                    type="text" placeholder="mm/dd/yyyy" name="co">
                                             </div>
                                         </div>
                                     </div>
@@ -69,9 +70,15 @@
                                                 <div class="row g-2">
                                                     <label for="inputPassword"
                                                         class="col-4 text-tiny text-orange">Adult</label>
-                                                    <div class="col-auto">
-                                                        <input class="input-number" id=demoInput type=number min=0
-                                                            max=110 placeholder="0" name="adult">
+
+                                                    <div class="col-8 mt-0">
+                                                        <div class="input-group input-number">
+                                                            <button class="btn sub" type="button" id="sub">-</button>
+                                                            <input class="input-number border-0 text-center field"
+                                                                placeholder="1" type="text" id="demoInput" name="adult"
+                                                                value="">
+                                                            <button class="btn add" type="button" id="add">+</button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -79,9 +86,14 @@
                                                 <div class="row g-2">
                                                     <label for="inputPassword"
                                                         class="col-4 text-tiny text-orange">Kid</label>
-                                                    <div class="col-auto">
-                                                        <input class="input-number" id=demoInput type=number min=0
-                                                            max=110 placeholder="0" name="kid">
+                                                    <div class="col-8 mt-0">
+                                                        <div class="input-group input-number">
+                                                            <button class="btn sub2" type="button" id="sub2">-</button>
+                                                            <input class="input-number border-0 text-center field2"
+                                                                placeholder="1" type="text" id="demoInput" name="kid"
+                                                                value="">
+                                                            <button class="btn add2" type="button" id="add2">+</button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -89,14 +101,18 @@
                                                 <div class="row g-2">
                                                     <label for="inputPassword"
                                                         class="col-4 text-tiny text-orange">Room</label>
-                                                    <div class="col-auto">
-                                                        <input class="input-number" id=demoInput type=number min=1
-                                                            max=110 placeholder="1" name="ro" value="1">
+                                                    <div class="col-8 mt-0">
+                                                        <div class="input-group input-number">
+                                                            <button class="btn sub3" type="button" id="sub3">-</button>
+                                                            <input class="input-number border-0 text-center field3"
+                                                                placeholder="1" type="text" id="demoInput" name="ro"
+                                                                value="">
+                                                            <button class="btn add3" type="button" id="add3">+</button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -287,10 +303,10 @@
                 </div>
             </div>
         </div>
-        <a href="{{url('tourist_attraction')}}">
+        <a href="{{url('tourist-attraction')}}">
             <div class="row justify-content-center">
                 <div class="col-sm-2 col-6 mt-sm-5 mt-2">
-                    <div href="{{url('tourist_attraction')}}" class="btn-border-grey">ดูทั้งหมด</div>
+                    <div href="{{url('tourist-attraction')}}" class="btn-border-grey">ดูทั้งหมด</div>
                 </div>
             </div>
         </a>
@@ -348,8 +364,7 @@
                                 type="button" role="tab" aria-controls="pills-10" aria-selected="false">ทุ่งนา</button>
                         </li>
                         <li class="nav-item">
-                            <a href="{{url('category')}}" class="nav-link btn-more"><i
-                                    class="fas fa-exchange-alt rote"></i>เพิ่มเติม</a>
+                            <a href="{{url('category')}}" class="nav-link btn-more">เพิ่มเติม</a>
                         </li>
                     </ul>
                 </div>
@@ -1106,9 +1121,18 @@
 </body>
 
 </html>
-
 <script>
-    $('#city').on('keyup', function () {
+    $(function () {
+        $("#datepicker").datepicker();
+    });
+
+    $(function () {
+        $("#datepicker2").datepicker();
+    });
+
+</script>
+<script>
+    $('#iconified').on('keyup', function () {
         var input = $(this);
         if (input.val().length === 0) {
             input.addClass('empty');
@@ -1122,8 +1146,9 @@
         $('#customers-testimonials').owlCarousel({
             loop: true,
             margin: 30,
-            navText: ['<span></span>',
-                '<span><i class="arrow fas fa-chevron-circle-right"></i></span>'],
+            navText: ['<span><i class="arrow fas fa-chevron-circle-left"></i></span>',
+                '<span><i class="arrow fas fa-chevron-circle-right"></i></span>'
+            ],
             autoplayHoverPause: false,
             autoplay: false,
             dots: true,
@@ -1332,5 +1357,76 @@
 
     /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
     autocomplete(document.getElementById("myInput"), courses);
+
+</script>
+
+
+<!-- ปุ่มเพิ่ม-ลด  -->
+<script>
+    var unit = 1;
+    var total;
+    // if user changes value in field
+    $('.field').change(function () {
+        unit = this.value;
+    });
+    $('.add').click(function () {
+        unit++;
+        var $input = $(this).prevUntil('.sub');
+        $input.val(unit);
+        unit = unit;
+    });
+    $('.sub').click(function () {
+        if (unit > 0) {
+            unit--;
+            var $input = $(this).nextUntil('.add');
+            $input.val(unit);
+        }
+    });
+
+</script>
+
+<script>
+    var unit2 = 1;
+    var total;
+    // if user changes value in field
+    $('.field2').change(function () {
+        unit2 = this.value;
+    });
+    $('.add2').click(function () {
+        unit2++;
+        var $input = $(this).prevUntil('.sub2');
+        $input.val(unit2);
+        unit2 = unit2;
+    });
+    $('.sub2').click(function () {
+        if (unit2 > 0) {
+            unit2--;
+            var $input = $(this).nextUntil('.add2');
+            $input.val(unit2);
+        }
+    });
+
+</script>
+
+<script>
+    var unit3 = 1;
+    var total;
+    // if user changes value in field
+    $('.field3').change(function () {
+        unit3 = this.value;
+    });
+    $('.add3').click(function () {
+        unit3++;
+        var $input = $(this).prevUntil('.sub3');
+        $input.val(unit3);
+        unit3 = unit3;
+    });
+    $('.sub3').click(function () {
+        if (unit3 > 0) {
+            unit3--;
+            var $input = $(this).nextUntil('.add3');
+            $input.val(unit3);
+        }
+    });
 
 </script>

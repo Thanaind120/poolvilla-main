@@ -2,7 +2,7 @@
 <html lang="th">
 <head>      
      <title>Poolvilla</title>
-    @include('inc_header') 
+    <?php require('inc_header.php'); ?> 
     <link rel="stylesheet" href="css/owl.carousel.min.css">
 <link rel="stylesheet" href="css/owl.theme.default.min.css">
 <script src="js/owl.carousel.min.js"></script>

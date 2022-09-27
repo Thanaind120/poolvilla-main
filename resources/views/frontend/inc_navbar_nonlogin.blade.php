@@ -5,7 +5,7 @@
         
             <div class="row justify-content-between">
           <div class="col-xl-4 col-2">
-             <a href="index.php">
+             <a href="{{url('index')}}">
                 <img src="{{asset('assets_frontend/images/logo.svg')}}" class="logo">
              </a>
           </div>
@@ -14,7 +14,7 @@
                 <ul class="nav-list">
                     <li class="nav-link"><a href="{{url('index')}}">Home</a>
                      </li>
-                    <li class="nav-link "><a href="{{url('tourist_attraction')}}">Tourist Attraction</a></li>
+                    <li class="nav-link "><a href="{{url('tourist-attraction')}}">Tourist Attraction</a></li>
                     <li class="nav-link "><a href="{{url('register')}}">Register</a>
                      </li>
                      <li class="nav-link "><a href="{{url('signin')}}"><i class="fas fa-sign-in-alt text-orange pe-2"></i>Sign in</a>
@@ -58,7 +58,7 @@
                     <!-- non-login-->
                     <ul class="nav-list">
                         <li class="nav-link-"><a href="{{url('index')}}"><i class="fas fa-home text-orange pe-2"></i>Home</a></li>
-                        <li class="nav-link-"><a href="{{url('tourist_attraction')}}"><i class="fas fa-place-of-worship text-orange pe-2"></i>Tourist Attraction</a></li>
+                        <li class="nav-link-"><a href="{{url('tourist-attraction')}}"><i class="fas fa-place-of-worship text-orange pe-2"></i>Tourist Attraction</a></li>
                         <li class="nav-link-"><a href="{{url('register')}}"><i class="fas fa-user-plus text-orange pe-2"></i>Register</a></li>
                         <li class="nav-link-"><a href="{{url('signin')}}"><i class="fas fa-sign-in-alt text-orange pe-2"></i>Sign in</a></li>
                     </ul>
@@ -67,7 +67,7 @@
                    <!-- <ul class="nav-list">
                         <li class="nav-link- text-orange">Welcome, Elle</li>
                         <li class="nav-link-"><a href="index.php"><i class="fas fa-home text-orange pe-2"></i>Home</a></li>
-                        <li class="nav-link-"><a href="tourist_attraction.php"><i class="fas fa-place-of-worship text-orange pe-2"></i>Tourist Attraction</a></li>
+                        <li class="nav-link-"><a href="tourist-attraction.php"><i class="fas fa-place-of-worship text-orange pe-2"></i>Tourist Attraction</a></li>
                         <li class="nav-link-"> <a href="profile.php"><i class="far fa-id-card text-orange pe-2"></i>My Profile</a></li>
                         <li class="nav-link-"><a href="mybooking.php"><i class="fas fa-umbrella-beach text-orange pe-2"></i>My Booking</a></li>
                         <li class="nav-link-"><a href="review.php"><i class="far fa-star text-orange pe-2"></i>My Reviews</a></li>

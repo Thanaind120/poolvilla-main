@@ -2,13 +2,13 @@
 <html lang="th">
 <head>      
     <title>Poolvilla</title>
-    @include('frontend/inc_header')
-    <link rel="stylesheet" href="{{asset('assets_frontend/css/owl.carousel.min.css')}}">
-<link rel="stylesheet" href="{{asset('assets_frontend/css/owl.theme.default.min.css')}}">
-<script src="{{asset('assets_frontend/js/owl.carousel.min.js')}}"></script>
+    <?php require('inc_header.php'); ?> 
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="css/owl.theme.default.min.css">
+<script src="js/owl.carousel.min.js"></script>
 </head>
 <body >
-    @include('frontend/inc_navbar')
+    <?php require('inc_navbar.php'); ?> 
     <div class="bg-orange-light2">
         <div class="row g-1">
             <div class="col-lg-2 col-12">
@@ -17,7 +17,7 @@
             <div class="col-lg-4 col-sm-6">
                 <div class="bg-white-form">
                     <div class="row g-0">
-                        <div class="col-6">
+                    <div class="col-6">
                             <div class="line-check-in">
                                 <label class="top-text-form" for="check-in">Check in</label>
                                 <div class="row g-0">
@@ -25,7 +25,7 @@
                                         <i class="far fa-calendar check-calender"></i>
                                     </div>
                                     <div class="col-10">
-                                        <input class="form-control orange-check check-in-out"  id="check-in" type="date" >
+                                        <input class="form-control orange-check check-in-out" id="datepicker" type="text" placeholder="mm/dd/yyyy">
                                     </div>
                                 </div>
                             </div>
@@ -37,7 +37,7 @@
                                     <i class="far fa-calendar check-calender"></i>
                                 </div>
                                 <div class="col-10">
-                                    <input class="form-control orange-check check-in-out"  id="check-in" type="date" >
+                                    <input class="form-control orange-check check-in-out" id="datepicker2" type="text" placeholder="mm/dd/yyyy">
                                 </div>
                             </div>
                         </div>
@@ -54,30 +54,42 @@
                                 <div class="col-11">
                                     <div class="row g-2">
                                         
-                                        <div class="col-4">
-                                            <div class="row g-2">
-                                                <label for="inputPassword" class="col-4 text-tiny text-orange">Adult</label>
-                                                <div class="col-auto">
-                                                  <input class="input-number " id=demoInput type=number min=0 max=110 placeholder="0">
-                                                </div>
+                                    <div class="col-4">
+                                    <div class="row g-2">
+                                        <label for="inputPassword" class="col-4 text-tiny text-orange">Adult</label>
+                                        <div class="col-8 mt-0">
+                                            <div class="input-group input-number">
+                                                <button class="btn sub" type="button" id="sub">-</button>
+                                                <input class="input-number border-0 text-center field " placeholder="" type="text" id="1" value="1">
+                                                <button class="btn add" type="button" id="add">+</button>
                                             </div>
                                         </div>
-                                        <div class="col-4">
-                                            <div class="row g-2">
-                                                <label for="inputPassword" class="col-4 text-tiny text-orange">Kid</label>
-                                                <div class="col-auto">
-                                                  <input class="input-number" id=demoInput type=number min=0 max=110  placeholder="0" >
-                                                </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="row g-2">
+                                        <label for="inputPassword" class="col-4 text-tiny text-orange">Kid</label>
+                                        <div class="col-8 mt-0">
+                                            <div class="input-group input-number">
+                                                <button class="btn sub" type="button" id="sub">-</button>
+                                                <input class="input-number border-0 text-center field " placeholder="" type="text" id="1" value="1">
+                                                <button class="btn add" type="button" id="add">+</button>
                                             </div>
                                         </div>
-                                        <div class="col-4">
-                                            <div class="row g-2">
-                                                <label for="inputPassword" class="col-4 text-tiny text-orange">Room</label>
-                                                <div class="col-auto">
-                                                  <input class="input-number" id=demoInput type=number min=0 max=110  placeholder="0">
-                                                </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="row g-2">
+                                        <label for="inputPassword" class="col-4 text-tiny text-orange">Room</label>
+                                        <div class="col-8 mt-0">
+                                            <div class="input-group input-number">
+                                                <button class="btn sub" type="button" id="sub">-</button>
+                                                <input class="input-number border-0 text-center field " placeholder="" type="text" id="1" value="1">
+                                                <button class="btn add" type="button" id="add">+</button>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
                                     </div>
                                   
                                 </div>
@@ -90,11 +102,11 @@
         </div>
     </div>   
     <div class="bg-orange">
-        <div class="clearfix">
+        <!-- <div class="clearfix">
             <div class="float-end width-search">
                 <input class="form-control empty orange" type="text" id="iconified" placeholder="&#xF002;  Where  are  you  looking for ?"aria-label="default input example">
             </div>
-        </div>
+        </div> -->
     </div>
     <div class="container">
         <div class="clearfix">
@@ -162,24 +174,24 @@
                     <div class="col-sm-8">
                         <div class="box-grey my-2">
                            <div class="clearfix">
-                               <img src="{{asset('assets_frontend/images/review.svg')}}" class="float-end reviewpage-icon">
+                               <img src="images/review.svg" class="float-end reviewpage-icon">
                             </div>
                             <div class="text-medium text-grey p-3 mt-3"> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </div>
                         </div>
                         <div class="row g-1">
                             <div class="col-sm-3 col-6">
                                 <div class="img-a">
-                                <img src="{{asset('assets_frontend/images/cities%20(1).jpg')}}" style="width:100%" data-bs-toggle="modal" data-bs-target="#popup-img-head">
+                                <img src="images/cities%20(1).jpg" style="width:100%" data-bs-toggle="modal" data-bs-target="#popup-img-head">
                                 </div>
                             </div>
                             <div class="col-sm-3 col-6">
                                 <div class="img-a">
-                                <img src="{{asset('assets_frontend/images/cities%20(2).jpg')}}" style="width:100%" data-bs-toggle="modal" data-bs-target="#popup-img-head">
+                                <img src="images/cities%20(2).jpg" style="width:100%" data-bs-toggle="modal" data-bs-target="#popup-img-head">
                                 </div>
                             </div>
                             <div class="col-sm-3 col-6">
                                 <div class="img-a">
-                                <img src="{{asset('assets_frontend/images/cities%20(3).jpg')}}" style="width:100%" data-bs-toggle="modal" data-bs-target="#popup-img-head">
+                                <img src="images/cities%20(3).jpg" style="width:100%" data-bs-toggle="modal" data-bs-target="#popup-img-head">
                                 </div>
                             </div>
                         </div>
@@ -198,15 +210,13 @@
                     <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
                       <div class="carousel-inner">
                         <div class="carousel-item active">
-                          <img src="{{asset('assets_frontend/images/cities%20(1).jpg')}}" class="d-block w-100" alt="...">
+                          <img src="images/cities%20(1).jpg" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                          <img src="{{asset('assets_frontend/images/cities%20(1).jpg')}}" class="d-block w-100" alt="...">
-                          <img src="{{asset('assets_frontend/images/cities%20(2).jpg')}}" class="d-block w-100" alt="...">
+                          <img src="images/cities%20(2).jpg" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                          <img src="{{asset('assets_frontend/images/cities%20(1).jpg')}}" class="d-block w-100" alt="...">
-                          <img src="{{asset('assets_frontend/images/cities%20(3).jpg')}}" class="d-block w-100" alt="...">
+                          <img src="images/cities%20(3).jpg" class="d-block w-100" alt="...">
                         </div>
                       </div>
                       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
@@ -235,8 +245,7 @@
                     <div class="col-sm-8">
                         <div class="box-grey my-2">
                            <div class="clearfix">
-                          <img src="{{asset('assets_frontend/images/cities%20(1).jpg')}}" class="d-block w-100" alt="...">
-                               <img src="{{asset('assets_frontend/images/review.svg')}}" class="float-end reviewpage-icon">
+                               <img src="images/review.svg" class="float-end reviewpage-icon">
                             </div>
                             <div class="text-medium text-grey p-3 mt-3"> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </div>
                         </div>
@@ -255,28 +264,24 @@
                     <div class="col-sm-8">
                         <div class="box-grey my-2">
                            <div class="clearfix">
-                          <img src="{{asset('assets_frontend/images/cities%20(1).jpg')}}" class="d-block w-100" alt="...">
-                               <img src="{{asset('assets_frontend/images/review.svg')}}" class="float-end reviewpage-icon">
+                               <img src="images/review.svg" class="float-end reviewpage-icon">
                             </div>
                             <div class="text-medium text-grey p-3 mt-3"> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </div>
                         </div>
                         <div class="row g-1">
                             <div class="col-sm-3 col-6">
                                 <div class="img-a">
-                          <img src="{{asset('assets_frontend/images/cities%20(1).jpg')}}" class="d-block w-100" alt="...">
-                                <img src="{{asset('assets_frontend/images/cities%20(1).jpg')}}" style="width:100%" data-bs-toggle="modal" data-bs-target="#popup-img-head">
+                                <img src="images/cities%20(1).jpg" style="width:100%" data-bs-toggle="modal" data-bs-target="#popup-img-head">
                                 </div>
                             </div>
                             <div class="col-sm-3 col-6">
                                 <div class="img-a">
-                          <img src="{{asset('assets_frontend/images/cities%20(1).jpg')}}" class="d-block w-100" alt="...">
-                                <img src="{{asset('assets_frontend/images/cities%20(2).jpg')}}" style="width:100%" data-bs-toggle="modal" data-bs-target="#popup-img-head">
+                                <img src="images/cities%20(2).jpg" style="width:100%" data-bs-toggle="modal" data-bs-target="#popup-img-head">
                                 </div>
                             </div>
                             <div class="col-sm-3 col-6">
                                 <div class="img-a">
-                          <img src="{{asset('assets_frontend/images/cities%20(1).jpg')}}" class="d-block w-100" alt="...">
-                                <img src="{{asset('assets_frontend/images/cities%20(3).jpg')}}" style="width:100%" data-bs-toggle="modal" data-bs-target="#popup-img-head">
+                                <img src="images/cities%20(3).jpg" style="width:100%" data-bs-toggle="modal" data-bs-target="#popup-img-head">
                                 </div>
                             </div>
                         </div>
@@ -295,16 +300,13 @@
                     <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
                       <div class="carousel-inner">
                         <div class="carousel-item active">
-                          <img src="{{asset('assets_frontend/images/cities%20(1).jpg')}}" class="d-block w-100" alt="...">
-                          <img src="{{asset('assets_frontend/images/cities%20(1).jpg')}}" class="d-block w-100" alt="...">
+                          <img src="images/cities%20(1).jpg" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                          <img src="{{asset('assets_frontend/images/cities%20(1).jpg')}}" class="d-block w-100" alt="...">
-                          <img src="{{asset('assets_frontend/images/cities%20(2).jpg')}}" class="d-block w-100" alt="...">
+                          <img src="images/cities%20(2).jpg" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                          <img src="{{asset('assets_frontend/images/cities%20(1).jpg')}}" class="d-block w-100" alt="...">
-                          <img src="{{asset('assets_frontend/images/cities%20(3).jpg')}}" class="d-block w-100" alt="...">
+                          <img src="images/cities%20(3).jpg" class="d-block w-100" alt="...">
                         </div>
                       </div>
                       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
@@ -326,6 +328,40 @@
         
     </div>
         <div class="space-footer"></div>
-        @include('frontend/inc_footer')
+    <?php require('inc_footer.php'); ?> 
 </body>
 </html>
+
+
+<!-- ปุ่มเพิ่ม-ลด  -->
+<script>
+    var unit = 1;
+    var total;
+    // if user changes value in field
+    $('.field').change(function() {
+        unit = this.value;
+    });
+    $('.add').click(function() {
+        unit++;
+        var $input = $(this).prevUntil('.sub');
+        $input.val(unit);
+        unit = unit;
+    });
+    $('.sub').click(function() {
+        if (unit > 0) {
+            unit--;
+            var $input = $(this).nextUntil('.add');
+            $input.val(unit);
+        }
+    });
+</script>
+
+<script>
+    $(function() {
+        $("#datepicker").datepicker();
+    });
+
+    $(function() {
+        $("#datepicker2").datepicker();
+    });
+</script>

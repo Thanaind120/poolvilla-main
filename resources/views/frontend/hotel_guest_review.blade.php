@@ -17,7 +17,7 @@
              <div class="text-head-d text-grey  mt-3 mb-2  text-bold">Guest Review</div>
             <div class="box-hotel-p">
                 <div class="col-xl-12 mb-5">
-                    <div class="row g-2">
+                    <div class="row g-2 justify-content-center">
                         <div class="col-sm-2">
                             <div class="text-detail text-bold text-grey mb-1">Sort by</div>
                             <select class="form-select" aria-label="Default select example">

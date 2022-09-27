@@ -2,7 +2,7 @@
 <html lang="th">
 
 <head>
-    <title>หน้าแรก</title>
+    <title>Poolvilla</title>
     @include('frontend/inc_header')
     <link rel="stylesheet" href="{{asset('assets_frontend/css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets_frontend/css/owl.theme.default.min.css')}}">
@@ -32,7 +32,7 @@
                     <div class="text-title text-grey text-bold mb-3">User Detail</div>
                     <div class="box-white">
                         <form method="POST" enctype="multipart/form-data"
-                            action="{{ url('/profile/'.Auth::user()->id) }}">
+                            action="{{ url('/profile/id='.Auth::user()->id) }}">
                             @csrf
                             @method('PUT')
                             <div class="col-sm-8">
@@ -45,20 +45,20 @@
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label text-bold text-tiny">Last
                                         Name</label>
-                                    <input type="text" class="form-control" id="lastname" placeholder=""
-                                        name="lastname" value="{{ Auth::user()->lastname }}" maxlength="255">
+                                    <input type="text" class="form-control" id="lastname" placeholder="" name="lastname"
+                                        value="{{ Auth::user()->lastname }}" maxlength="255">
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1"
                                         class="form-label text-bold text-tiny">E-mail</label>
-                                    <input type="email" class="form-control" id="email"
-                                        placeholder="" name="email" onblur="check_email(this)" value="{{ Auth::user()->email }}" maxlength="255">
+                                    <input type="email" class="form-control" id="email" placeholder="" name="email"
+                                        onblur="check_email(this)" value="{{ Auth::user()->email }}" maxlength="255">
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label text-bold text-tiny">Phone
                                         Number</label>
-                                        <input type="text" class="form-control" id="phone" placeholder=""
-                                        name="phone" onblur="check_phone(this)" value="{{ Auth::user()->phone }}" maxlength="255">  
+                                    <input type="text" class="form-control" id="phone" placeholder="" name="phone"
+                                        onblur="check_phone(this)" value="{{ Auth::user()->phone }}" maxlength="255">
                                 </div>
                             </div>
                             <div class="row g-1">
@@ -73,7 +73,6 @@
                             </div>
                         </form>
                     </div>
-
                     <div class="text-title text-grey text-bold mt-4 mb-3">Payment Method</div>
                     <div class="row mb-3">
                         @foreach ($payment as $key => $val)
@@ -105,7 +104,7 @@
                                 <div class="modal fade" id="edit-card" tabindex="-1" aria-labelledby="exampleModalLabel"
                                     aria-hidden="true">
                                     <form method="POST" enctype="multipart/form-data"
-                                        action="{{ url('/profile/payment/'.$val->id) }}">
+                                        action="{{ url('/profile/payment/id='.$val->id) }}">
                                         @csrf
                                         @method('PUT')
                                         <div class="modal-dialog modal-dialog-centered">
@@ -121,8 +120,9 @@
                                                             class="form-label text-bold text-tiny">Credit/debit card
                                                             number</label>
                                                         <input type="text" class="form-control"
-                                                            id="card_number_for_edit" name="credit_number" onblur="check_cards(this)"
-                                                            value="{{ $val->credit_number }}" maxlength="19">
+                                                            id="card_number_for_edit" name="credit_number"
+                                                            onblur="check_cards(this)" value="{{ $val->credit_number }}"
+                                                            maxlength="19">
                                                         <!-- id for insert -->
                                                         <input type="hidden" name="id" id="id_for_edit">
                                                     </div>
@@ -197,7 +197,8 @@
                                                     class="form-label text-bold text-tiny">Credit/debit card
                                                     number</label>
                                                 <input type="text" class="form-control" id="credit_number"
-                                                    name="credit_number" maxlength="19" onblur="check_card(this)" required>
+                                                    name="credit_number" maxlength="19" onblur="check_card(this)"
+                                                    required>
                                             </div>
                                             <div class="">
                                                 <label for="exampleFormControlInput3"
@@ -240,7 +241,7 @@
                     <div class="text-title text-grey text-bold mb-3 mt-4">Change password</div>
                     <div class="box-white">
                         <form method="POST" enctype="multipart/form-data"
-                            action="{{ url('/profile/updated/'.Auth::user()->id) }}">
+                            action="{{ url('/profile/updated/id='.Auth::user()->id) }}">
                             @csrf
                             @method('PUT')
                             <div class="col-sm-8">
@@ -288,75 +289,76 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
     <script type="text/javascript">
         $('#firstname').on('keypress', function (event) {
-			var regex = new RegExp("^[ก-ฮๆไำะัี๊ฯุูึโ้็่๋าแิื์a-zA-Z]+$");
-			var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-				if (!regex.test(key)) {
-					event.preventDefault();
-					return false;
-				}
-		});
+            var regex = new RegExp("^[ก-ฮๆไำะัี๊ฯุูึโ้็่๋าแิื์a-zA-Z]+$");
+            var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+            if (!regex.test(key)) {
+                event.preventDefault();
+                return false;
+            }
+        });
         $('#lastname').on('keypress', function (event) {
-			var regex = new RegExp("^[ก-ฮๆไำะัี๊ฯุูึโ้็่๋าแิื์a-zA-Z]+$");
-			var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-				if (!regex.test(key)) {
-					event.preventDefault();
-					return false;
-				}
-		});
+            var regex = new RegExp("^[ก-ฮๆไำะัี๊ฯุูึโ้็่๋าแิื์a-zA-Z]+$");
+            var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+            if (!regex.test(key)) {
+                event.preventDefault();
+                return false;
+            }
+        });
+
         function check_phone(inputtxt) {
             var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-            if(inputtxt.value.match(phoneno)) {
+            if (inputtxt.value.match(phoneno)) {
                 return true;
-            }
-            else {
+            } else {
                 alert('You have entered an incorrect phone number! Example xxx-xxx-0011');
                 return false;
             }
         }
         $('#phone').on('keypress', function (event) {
-			var regex = new RegExp("^[0-9-]+$");
-			var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-				if (!regex.test(key)) {
-					event.preventDefault();
-					return false;
-				}
-		});
+            var regex = new RegExp("^[0-9-]+$");
+            var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+            if (!regex.test(key)) {
+                event.preventDefault();
+                return false;
+            }
+        });
+
         function check_card(inputtxt) {
             var phoneno = /^\(?([0-9]{4})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
-            if(inputtxt.value.match(phoneno)) {
+            if (inputtxt.value.match(phoneno)) {
                 return true;
-            }
-            else {
+            } else {
                 alert('You have entered an incorrect credit card number! Example xxxx-xxxx-xxxx');
                 return false;
             }
         }
         $('#credit_number').on('keypress', function (event) {
-			var regex = new RegExp("^[0-9-]+$");
-			var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-				if (!regex.test(key)) {
-					event.preventDefault();
-					return false;
-				}
-		});
+            var regex = new RegExp("^[0-9-]+$");
+            var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+            if (!regex.test(key)) {
+                event.preventDefault();
+                return false;
+            }
+        });
+
         function check_cards(inputtxt) {
             var phoneno = /^\(?([0-9]{4})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
-            if(inputtxt.value.match(phoneno)) {
+            if (inputtxt.value.match(phoneno)) {
                 return true;
-            }
-            else {
+            } else {
                 alert('You have entered an incorrect credit card number! Example xxxx-xxxx-xxxx');
                 return false;
             }
         }
         $('#card_number_for_edit').on('keypress', function (event) {
-			var regex = new RegExp("^[0-9-]+$");
-			var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-				if (!regex.test(key)) {
-					event.preventDefault();
-					return false;
-				}
-		});
+            var regex = new RegExp("^[0-9-]+$");
+            var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+            if (!regex.test(key)) {
+                event.preventDefault();
+                return false;
+            }
+        });
+
         function check_email(elm) {
             var regex_email = /^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*\@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.([a-zA-Z]){2,4})$/
             if (!elm.value.match(regex_email)) {
@@ -366,13 +368,14 @@
             }
         }
         $('#email').on('keypress', function (event) {
-			var regex = new RegExp("^[a-zA-Z0-9@.?-]+$");
-			var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-				if (!regex.test(key)) {
-					event.preventDefault();
-					return false;
-				}
-		});
+            var regex = new RegExp("^[a-zA-Z0-9@.?-]+$");
+            var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+            if (!regex.test(key)) {
+                event.preventDefault();
+                return false;
+            }
+        });
+
         function show_edit(id, credit_number, credit_name, credit_date, credit_cvv) {
             // ส่งค่าไปยัง input ด้วย id
             $('#id_for_edit').val(id);
@@ -397,7 +400,7 @@
                     if (isConfirm) {
                         $.ajax({
                             type: "DELETE",
-                            url: "{!! url('/profile/payment/delete/" + id + "') !!}",
+                            url: "{!! url('/profile/payment/delete/id=" + id + "') !!}",
                             data: {
                                 '_token': "{{ csrf_token() }}"
                             },
@@ -411,7 +414,6 @@
         }
 
     </script>
-
 </body>
 
 </html>

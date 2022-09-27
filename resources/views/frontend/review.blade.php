@@ -38,7 +38,7 @@
                             <div class="boxshow">
                                 @foreach ($review as $key => $val)
                                 @if ($val->status == 0)
-                                <form action="{{ url('/review/'.$val->id) }}" method="POST"
+                                <form action="{{ url('/review/id='.$val->id) }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="card booking my-3" href="#">

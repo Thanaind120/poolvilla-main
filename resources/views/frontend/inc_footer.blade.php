@@ -26,8 +26,9 @@
                     <ul class="">
                         <li class="nav-link non-scroll"><a href="{{url('index')}}">Home</a></li>
                         <li class="nav-link non-scroll"><a href="{{url('tourist_attraction')}}">Tourist Attraction</a></li>
+                        <li class="nav-link non-scroll"><a href="{{url('signin_hotel')}}">For Partner</a></li>
                        <!-- when non-login-->
-                         <li class="nav-link non-scroll"><a href="{{url('signin')}}">Sign in</a></li>
+                         <!-- <li class="nav-link non-scroll"><a href="signin.php">Sign in</a></li> -->
                        <!-- when non-login-->
                        <!-- when login
                         <li class="nav-link non-scroll"><a href="profile.php">My Profile</a></li>
@@ -35,11 +36,11 @@
                          when login-->
                     </ul>
                 </div>
-                <div class="col-6">
+                <!-- <div class="col-6">
                     <ul class="">
-                         <li class="nav-link non-scroll"><a href="{{url('signin_hotel')}}">For Hotel</a></li>
+                         <li class="nav-link non-scroll"><a href="signin_hotel.php">For Hotel</a></li>
                     </ul>
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="col-sm-3 col-6">

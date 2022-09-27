@@ -7,7 +7,6 @@
                     <div class="col-xl-4 col-2">
                         <a href="{{url('index')}}">
                             <img src="{{asset('assets_frontend/images/logo.svg')}}" class="logo">
-
                         </a>
                     </div>
                     <div class="col-xl-8 col-10">
@@ -15,7 +14,7 @@
                         <ul class="nav-list">
                             <li class="nav-link non-scroll"><a href="{{url('index')}}">Home</a>
                             </li>
-                            <li class="nav-link non-scroll"><a href="{{url('tourist_attraction')}}">Tourist
+                            <li class="nav-link non-scroll"><a href="{{url('tourist-attraction')}}">Tourist
                                     Attraction</a></li>
                             <li class="nav-link non-scroll">
                                 <div class="dropdown profile">
@@ -30,8 +29,8 @@
                                     </div>
                                     @else
                                     <div class="dropdown-content profile">
-                                      <a href="{{url('signin')}}">Sign in</a>
-                                  </div>
+                                        <a href="{{url('signin')}}">Sign in</a>
+                                    </div>
                                     @endif
                                 </div>
                             </li>
@@ -80,28 +79,35 @@
                     <!-- non-login-->
                     <!--<ul class="nav-list">
                         <li class="nav-link-"><a href="index.php"><i class="fas fa-home text-orange pe-2"></i>Home</a></li>
-                        <li class="nav-link-"><a href="tourist_attraction.php"><i class="fas fa-place-of-worship text-orange pe-2"></i>Tourist Attraction</a></li>
+                        <li class="nav-link-"><a href="tourist-attraction.php"><i class="fas fa-place-of-worship text-orange pe-2"></i>Tourist Attraction</a></li>
                         <li class="nav-link-"><a href="register.php"><i class="fas fa-user-plus text-orange pe-2"></i>Register</a></li>
                         <li class="nav-link-"><a href="signin.php"><i class="fas fa-sign-in-alt text-orange pe-2"></i>Sign in</a></li>
                     </ul>-->
                     <!-- non-login-->
                     <!-- when-login-->
                     <ul class="nav-list">
-
-
-                        <li class="nav-link- text-orange">Welcome, Ellie</li>
+                        <li class="nav-link- text-orange"> Welcome,@if(Auth::user()!=null)
+                            {{Auth::user()->firstname}} @else Elle @endif</li>
                         <li class="nav-link-"><a href="{{url('index')}}"><i
-                                    class="fas fa-home text-orange pe-2"></i>Home</a></li>
-                        <li class="nav-link-"><a href="{{url('tourist_attraction')}}"><i
+                                    class="fas fa-home text-orange pe-2"></i>Home</a>
+                        </li>
+                        <li class="nav-link-"><a href="{{url('tourist-attraction')}}"><i
                                     class="fas fa-place-of-worship text-orange pe-2"></i>Tourist Attraction</a></li>
+                        @if (Auth::user() != '')
                         <li class="nav-link-"> <a href="{{url('profile')}}"><i
-                                    class="far fa-id-card text-orange pe-2"></i>My Profile</a></li>
+                                    class="far fa-id-card text-orange pe-2"></i>My
+                                Profile</a></li>
                         <li class="nav-link-"><a href="{{url('mybooking')}}"><i
                                     class="fas fa-umbrella-beach text-orange pe-2"></i>My Booking</a></li>
                         <li class="nav-link-"><a href="{{url('review')}}"><i class="far fa-star text-orange pe-2"></i>My
                                 Reviews</a></li>
-                        <li class="nav-link-"><a href=""><i class="fas fa-door-open text-orange pe-2"></i>Log out</a>
+                        <li class="nav-link-"><a href="{{ url('logout') }}"><i
+                                    class="fas fa-door-open text-orange pe-2"></i>Log out</a>
                         </li>
+                        @else
+                        <li class="nav-link-"><a href="{{url('signin')}}"><i
+                                    class="fas fa-door-open text-orange pe-2"></i>Sign in</a>
+                        @endif
                     </ul>
                     <!-- when-login-->
                 </div>

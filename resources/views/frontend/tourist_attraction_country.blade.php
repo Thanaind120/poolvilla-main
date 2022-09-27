@@ -2,17 +2,17 @@
 <html lang="th">
 <head>      
     <title>Poolvilla</title>
-        @include('frontend/inc_header')
+    <?php require('inc_header.php'); ?> 
     <link rel="stylesheet" href="css/owl.carousel.min.css">
 <link rel="stylesheet" href="css/owl.theme.default.min.css">
 <script src="js/owl.carousel.min.js"></script>
 </head>
     <body>
- @include('frontend/inc_navbar')
+        <?php require('inc_navbar.php'); ?> 
        
         <div class="container">
              <div class="banner">
-            <img src="{{asset('assets_frontend/images/place-banner2.jpg')}}" class="banner-index">
+            <img src="images/place-banner2.jpg" class="banner-index">
             <div class="centered_box">
                 <div class="text-banner-country text-center">*Country*</div>
             </div>
@@ -21,8 +21,8 @@
                 <div class="float-start">
                     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a class="bread" href="{{url('index')}}">Home</a></li>
-                            <li class="breadcrumb-item"><a class="bread" href="{{url('tourist_attraction')}}">Tourist Attraction</a></li>
+                            <li class="breadcrumb-item"><a class="bread" href="index.php">Home</a></li>
+                            <li class="breadcrumb-item"><a class="bread" href="tourist_attraction.php">Tourist Attraction</a></li>
                             <li class="breadcrumb-item active" aria-current="page">*country*</li>
                         </ol>
                     </nav>  
@@ -142,8 +142,8 @@
                     <div class="row">
                         <div class="col-6 mb-2">
                             <div class="frame-item box-destination">
-                                <a href="{{url('tourist_attraction_detail')}}" class="">          
-                                    <img src="{{asset('assets_frontend/images/1-place.jpg')}}" class="img-des">
+                                <a href="tourist_attraction_detail.php" class="">          
+                                    <img src="images/1-place.jpg" class="img-des">
                                     <div class="bottom-left">
                                         <p class="name-text text-white">Place</p>
                                         <p class="detail-text text-white">Cities , Country</p>
@@ -153,8 +153,8 @@
                         </div>
                         <div class="col-6 mb-2">
                             <div class="frame-item box-destination">
-                                <a href="{{url('tourist_attraction_detail')}}" class="">                
-                                    <img src="{{asset('assets_frontend/images/2-place.jpg')}}" class="img-des">
+                                <a href="tourist_attraction_detail.php" class="">          
+                                    <img src="images/2-place.jpg" class="img-des">
                                     <div class="bottom-left">
                                         <p class="name-text text-white">Place</p>
                                         <p class="detail-text text-white">Cities , Country</p>
@@ -164,8 +164,8 @@
                         </div>
                         <div class="col-6 mb-2">
                         <div class="frame-item box-destination">
-                            <a href="{{url('tourist_attraction_detail')}}" class="">              
-                                <img src="{{asset('assets_frontend/images/3-place.jpg')}}" class="img-des">
+                                <a href="tourist_attraction_detail.php" class="">          
+                                    <img src="images/3-place.jpg" class="img-des">
                                     <div class="bottom-left">
                                         <p class="name-text text-white">Place</p>
                                         <p class="detail-text text-white">Cities , Country</p>
@@ -175,8 +175,8 @@
                         </div>
                         <div class="col-6 mb-2">
                             <div class="frame-item box-destination">
-                                <a href="{{url('tourist_attraction_detail')}}" class="">              
-                                    <img src="{{asset('assets_frontend/images/4-place.jpg')}}" class="img-des">
+                                <a href="tourist_attraction_detail.php" class="">          
+                                    <img src="images/4-place.jpg" class="img-des">
                                     <div class="bottom-left">
                                         <p class="name-text text-white">Place</p>
                                         <p class="detail-text text-white">Cities , Country</p>
@@ -189,6 +189,6 @@
             </div>
         </div>
         <div class="space-footer"></div>
-       @include('frontend/inc_footer')
+        <?php require('inc_footer.php'); ?> 
 </body>
 </html>

@@ -2,23 +2,23 @@
 <html lang="th">
 <head>      
     <title>Poolvilla</title>
-   @include('frontend/inc_header')
-    <link rel="stylesheet" href="{{asset('assets_frontend/css/owl.carousel.min.css')}}">
-<link rel="stylesheet" href="{{asset('assets_frontend/css/owl.theme.default.min.css')}}">
-<script src="{{asset('assets_frontend/js/owl.carousel.min.js')}}"></script>
+    <?php require('inc_header.php'); ?> 
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="css/owl.theme.default.min.css">
+<script src="js/owl.carousel.min.js"></script>
 </head>
 <body >
-   @include('frontend/inc_navbar')
+    <?php require('inc_navbar.php'); ?> 
     <div class="container">
         <div class="banner">
-            <img src="{{asset('assets_frontend/images/place-banner.jpg')}}" class="banner-index">
+            <img src="images/place-banner.jpg" class="banner-index">
         </div>
         <div class="clearfix">
             <div class="float-start">
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a class="bread" href="{{url('index')}}">Home</a></li>
-                        <li class="breadcrumb-item"><a class="bread" href="{{url('tourist_attraction')}}">Tourist Attraction</a></li>
+                        <li class="breadcrumb-item"><a class="bread" href="index.php">Home</a></li>
+                        <li class="breadcrumb-item"><a class="bread" href="tourist_attraction.php">Tourist Attraction</a></li>
                         <li class="breadcrumb-item active" aria-current="page">*country*</li>
                     </ol>
                 </nav>  
@@ -38,11 +38,11 @@
                 <div class="name-text text-bold text-grey">Gallery</div>
                 <div class="row">
                     <div class="col-6">
-                        <img src="{{asset('assets_frontend/images/1-place.jpg')}}" style="width:100%" data-bs-toggle="modal" data-bs-target="#popup-img-head">
+                        <img src="images/1-place.jpg" style="width:100%" data-bs-toggle="modal" data-bs-target="#popup-img-head">
                     </div>
                     
                     <div class="col-6">
-                        <img src="{{asset('assets_frontend/images/1.2-place.jpg')}}" style="width:100%" data-bs-toggle="modal" data-bs-target="#popup-img-head">
+                        <img src="images/1.2-place.jpg" style="width:100%" data-bs-toggle="modal" data-bs-target="#popup-img-head">
                     </div>
                 </div>
                 <!-- Modal -->
@@ -58,11 +58,11 @@
                     <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
                       <div class="carousel-inner">
                         <div class="carousel-item active">
-                          <img src="{{asset('assets_frontend/images/1-place.jpg')}}" class="d-block w-100" alt="...">
+                          <img src="images/1-place.jpg" class="d-block w-100" alt="...">
                         </div>
                         
                           <div class="carousel-item">
-                          <img src="{{asset('assets_frontend/images/1.2-place.jpg')}}" class="d-block w-100" alt="...">
+                          <img src="images/1.2-place.jpg" class="d-block w-100" alt="...">
                         </div>
                         
                       </div>
@@ -87,6 +87,6 @@
         </div>
     </div>
     <div class="space-footer"></div>
-   @include('frontend/inc_footer')
+    <?php require('inc_footer.php'); ?> 
 </body>
 </html>

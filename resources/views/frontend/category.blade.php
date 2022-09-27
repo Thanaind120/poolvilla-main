@@ -28,7 +28,8 @@
                                         <i class="far fa-calendar check-calender"></i>
                                     </div>
                                     <div class="col-10">
-                                        <input class="form-control orange-check check-in-out" id="check-in" type="date">
+                                        <input class="form-control orange-check check-in-out" id="datepicker"
+                                            type="text" placeholder="mm/dd/yyyy">
                                     </div>
                                 </div>
                             </div>
@@ -40,7 +41,8 @@
                                     <i class="far fa-calendar check-calender"></i>
                                 </div>
                                 <div class="col-10">
-                                    <input class="form-control orange-check check-in-out" id="check-in" type="date">
+                                    <input class="form-control orange-check check-in-out" id="datepicker2" type="text"
+                                        placeholder="mm/dd/yyyy">
                                 </div>
                             </div>
                         </div>
@@ -60,27 +62,39 @@
                                 <div class="col-4">
                                     <div class="row g-2">
                                         <label for="inputPassword" class="col-4 text-tiny text-orange">Adult</label>
-                                        <div class="col-auto">
-                                            <input class="input-number " id=demoInput type=number min=0 max=110
-                                                placeholder="0">
+                                        <div class="col-8 mt-0">
+                                            <div class="input-group input-number">
+                                                <button class="btn sub" type="button" id="sub">-</button>
+                                                <input class="input-number border-0 text-center field " placeholder=""
+                                                    type="text" id="1" value="1">
+                                                <button class="btn add" type="button" id="add">+</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="row g-2">
                                         <label for="inputPassword" class="col-4 text-tiny text-orange">Kid</label>
-                                        <div class="col-auto">
-                                            <input class="input-number" id=demoInput type=number min=0 max=110
-                                                placeholder="0">
+                                        <div class="col-8 mt-0">
+                                            <div class="input-group input-number">
+                                                <button class="btn sub" type="button" id="sub">-</button>
+                                                <input class="input-number border-0 text-center field " placeholder=""
+                                                    type="text" id="1" value="1">
+                                                <button class="btn add" type="button" id="add">+</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="row g-2">
                                         <label for="inputPassword" class="col-4 text-tiny text-orange">Room</label>
-                                        <div class="col-auto">
-                                            <input class="input-number" id=demoInput type=number min=0 max=110
-                                                placeholder="0">
+                                        <div class="col-8 mt-0">
+                                            <div class="input-group input-number">
+                                                <button class="btn sub" type="button" id="sub">-</button>
+                                                <input class="input-number border-0 text-center field " placeholder=""
+                                                    type="text" id="1" value="1">
+                                                <button class="btn add" type="button" id="add">+</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -100,12 +114,13 @@
             <div class="float-start">
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a class="bread" href="index.php">Home</a></li>
+                        <li class="breadcrumb-item"><a class="bread" href="{{ url('/index') }}">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Catergory</li>
                     </ol>
                 </nav>
             </div>
         </div>
+        @if (Auth::user() != '' || Auth::user() != null)
         <div class="head-text-index">Enjoy with</div>
         <div class="line-bottom-head-text"></div>
         <div class="row mt-5">
@@ -122,6 +137,24 @@
             </div>
             @endforeach
         </div>
+        @else
+        <div class="head-text-index">Enjoy with</div>
+        <div class="line-bottom-head-text"></div>
+        <div class="row mt-5">
+            @foreach ($enjoywith as $key => $val)
+            <div class="col-sm-4 col-6">
+                <div class="frame-item box-destination">
+                    <a href="{{ url('/category-travel/id='.$val->enjoy_id) }}" class="">
+                        <img src="{{asset('assets_frontend/images/'.$val->enjoy_image)}}" class="img-des">
+                        <div class="bottom-left">
+                            <p class="name-text text-white">{{ $val->enjoy_name }}</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            @endforeach
+        </div>
+        @endif
     </div>
     <div class="space-footer"></div>
     @include('frontend/inc_footer')
@@ -137,6 +170,42 @@
         } else {
             input.removeClass('empty');
         }
+    });
+
+</script>
+
+
+<!-- ปุ่มเพิ่ม-ลด  -->
+<script>
+    var unit = 1;
+    var total;
+    // if user changes value in field
+    $('.field').change(function () {
+        unit = this.value;
+    });
+    $('.add').click(function () {
+        unit++;
+        var $input = $(this).prevUntil('.sub');
+        $input.val(unit);
+        unit = unit;
+    });
+    $('.sub').click(function () {
+        if (unit > 0) {
+            unit--;
+            var $input = $(this).nextUntil('.add');
+            $input.val(unit);
+        }
+    });
+
+</script>
+
+<script>
+    $(function () {
+        $("#datepicker").datepicker();
+    });
+
+    $(function () {
+        $("#datepicker2").datepicker();
     });
 
 </script>
