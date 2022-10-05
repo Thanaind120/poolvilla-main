@@ -15,6 +15,7 @@ use App\Models\Frontend\CountryModel;
 use App\Models\Frontend\CityModel;
 use App\Models\Frontend\RegisterModel;
 use App\Models\Frontend\PaymentModel;
+use App\Models\Frontend\PoolvillaModel;
 use App\Models\Frontend\ImageReviewModel;
 use App\Models\Frontend\ReviewModel;
 use App\Models\Frontend\EnjoyWithModel;
@@ -39,11 +40,13 @@ class FrontendController extends Controller
 
     public function get_select_hotel(Request $request,$id_country,$id)
     { 
+        
         $_city = CityModel::find($id);
         CityModel::find($id)->update([
             'p_view' => $_city->p_view + 1,
         ]);
-        return view('frontend.select-hotel')->with('_city', $_city);
+        $result = PoolvillaModel::orderBy('id', 'DESC')->get();
+        return view('frontend.select-hotel', compact('result'))->with('_city', $_city);
     }
 
     public function get_tourist_attraction()
@@ -107,36 +110,108 @@ class FrontendController extends Controller
         return redirect("/signin");
     }
 
-    public function search(request $request){
-
+    public function search(request $request)
+    { 
         $c_from = $request->province;
-        $cin_from = $request->ci;
-        $cout_from = $request->co;
-        $a_from = $request->adult;
-        $k_from = $request->kid;
-        $r_from = $request->ro;
-        $lower_from = $request->lower;
-        $upper_from = $request->upper;
-        if($c_from == '' || $cin_from == '' || $cout_from == '' || $a_from == '' || $k_from == ''|| $r_from == ''|| $lower_from == '' || $upper_from == ''){
-            $ci = '01-'.date('m-Y');
-            $co = date('t-m-Y',strtotime('01-'.date('m-Y')));
-            $ro = 1;
-        }else{
+        if($c_from != ''){
             $province = $c_from;
-            $ci = $cin_from;
-            $co = $cout_from;
-            $adult = $a_from;
-            $kid = $k_from;
-            $ro = $r_from;
-            if(isset($lower_from) || isset($upper)){
-            $lower = $lower_from;
-            $upper = $upper_from;
-            }
+	 	}else{
+            $province = NULL;
 		}
-        if(isset($lower_from) || isset($upper)){
-            return view('frontend/select-hotel', compact('c_from', 'cin_from', 'cout_from', 'a_from', 'k_from', 'r_from', 'ro', 'lower', 'upper'));
+        $cin_from = $request->ci;
+        if($cin_from != ''){
+            $ci = $cin_from;
+	 	}else{
+            $ci = '01-'.date('m-Y');
+		}
+        $cout_from = $request->co;
+        if($cout_from != ''){
+            $co = $cout_from;
+	 	}else{
+            $co = date('t-m-Y',strtotime('01-'.date('m-Y')));
+		}
+        $a_from = $request->adult;
+        if($a_from != ''){
+            $adult = $a_from;
+	 	}else{
+            $adult = NULL;
+		}
+        $k_from = $request->kid;
+        if($k_from != ''){
+            $kid = $k_from;
+	 	}else{
+            $kid = NULL;
+		}
+        $r_from = $request->ro;
+        if($r_from != ''){
+            $ro = $r_from;
+	 	}else{
+            $ro = 1;
+		}
+        $lower_from = $request->lower;
+        if($lower_from != ''){
+            $lower = $lower_from;
+        }else{
+            $lower = NULL;
         }
-        return view('frontend/select-hotel', compact('c_from', 'cin_from', 'cout_from', 'a_from', 'k_from', 'r_from', 'ro'));
+        $upper_from = $request->upper;
+        if($upper_from != ''){
+            $upper = $upper_from;
+        }else{
+            $upper = NULL;
+        }
+        $star5_from = $request->star5;
+        if($star5_from != ''){   
+            $star5 = $star5_from;
+        }else{
+            $star5 = NULL;
+        }
+        $star4_from = $request->star4;
+        if($star4_from != ''){
+            $star4 = $star4_from;
+        }else{
+            $star4 = NULL;
+        }
+        $star3_from = $request->star3;
+        if($star3_from != ''){
+            $star3 = $star3_from;
+        }else{
+            $star3 = NULL;
+        }
+        $star2_from = $request->star2;
+        if($star2_from != ''){
+            $star2 = $star2_from;
+        }else{
+            $star2 = NULL;
+        }
+        $star1_from = $request->star1;
+        if($star1_from != ''){ 
+            $star1 = $star1_from;
+        }else{
+            $star1 = NULL;
+        }
+        $star0_from = $request->star0;
+        if($star0_from != ''){
+            $star0 = $star0_from;
+        }else{
+            $star0 = NULL;
+        }
+        // $category_from = $request->category;
+        // if($category_from != ''){
+        //     $category = $category_from;
+        // }else{
+
+        // }
+        // dd($province);
+        // dd($star5_from);
+        // $result = PoolvillaModel::where('country', $province)->where('adult','>=', $adult)->where('kids','>=', $kid)->where('room','>=', $ro)->where('','<=', $lower)->orWhere('','>=', $upper)->where('star_rate', $star5)->orWhere('star_rate', $star4)->orWhere('star_rate', $star3)->orWhere('star_rate', $star2)->orWhere('star_rate', $star1)->orWhere('star_rate', $star0)->orderBy('id', 'DESC')->get();
+        if($lower != '' || $upper != '' || $star5 != '' || $star4 != '' || $star3 != '' || $star2 != '' || $star1 != '' || $star0 != ''){
+            $result = PoolvillaModel::where('country', $province)->where('adult','>=', $adult)->where('kids','>=', $kid)->where('room','>=', $ro)->where('star_rate', $star5)->orWhere('star_rate', $star4)->orWhere('star_rate', $star3)->orWhere('star_rate', $star2)->orWhere('star_rate', $star1)->orWhere('star_rate', $star0)->orderBy('id', 'DESC')->get();
+            return view('frontend/select-hotel', compact('result','c_from', 'cin_from', 'cout_from', 'a_from', 'k_from', 'r_from', 'ro', 'lower_from', 'upper_from', 'star5_from', 'star4_from', 'star3_from', 'star2_from', 'star1_from', 'star0_from'));
+        }else{
+            $result = PoolvillaModel::where('country', $province)->where('adult','>=', $adult)->where('kids','>=', $kid)->where('room','>=', $ro)->orderBy('id', 'DESC')->get();
+            return view('frontend/select-hotel', compact('result','c_from', 'cin_from', 'cout_from', 'a_from', 'k_from', 'r_from', 'ro', 'lower_from', 'upper_from', 'star5_from', 'star4_from', 'star3_from', 'star2_from', 'star1_from', 'star0_from')); 
+        }
     }
 
     public function updated_review(Request $request, $id)
