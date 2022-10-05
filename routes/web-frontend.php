@@ -30,7 +30,6 @@ Route::get('/clc', function() {
 });
 
 // ---------------------------------------- Member Frontend ---------------------------------------- //
-if(Auth::guard('web')->user() != '' || Auth::guard('web')->user() != null){
     Route::group(['middleware' => ['web','auth']], function () {
         Route::get('/',[FrontendController::class,'get_index']);
         Route::get('/index',[FrontendController::class,'get_index']);
@@ -85,7 +84,7 @@ if(Auth::guard('web')->user() != '' || Auth::guard('web')->user() != null){
             return view('frontend.tourist_attraction_country');
         });
     });
-}else if(Auth::guard('web')->user() == '' || Auth::guard('web')->user() == null){
+
     Route::POST('/loging',[LoginController::class,'loging']);
     Route::get('/logout',[LoginController::class,'logout']);
     Route::get('/signin', function () {
@@ -136,10 +135,11 @@ if(Auth::guard('web')->user() != '' || Auth::guard('web')->user() != null){
     Route::get('/tourist_attraction_country', function () {
         return view('frontend.tourist_attraction_country');
     });
-}
+
 // ---------------------------------------- End Member Frontend ---------------------------------------- //
 
 Route::POST('backend/loging','App\Http\Controllers\backend\LoginController@loging');
+Route::get('backend/logout','App\Http\Controllers\backend\LoginController@logout')->name('logout');
 Route::get('/backend/login', function () {
     return view('auth.login');
 });
