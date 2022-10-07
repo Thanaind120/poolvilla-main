@@ -27,6 +27,7 @@ Route::get('/backend/admin/add-member','App\Http\Controllers\Backend\ManageMembe
 Route::POST('backend/member_profile/save','App\Http\Controllers\Backend\ManageMemberController@save_form');
 Route::POST('/backend/member_reset','App\Http\Controllers\Backend\ManageMemberController@reset_password');
 Route::get('/backend/admin/update_member/{p}','App\Http\Controllers\Backend\ManageMemberController@get_form2');
+Route::POST('/backend/member_profile/delete','App\Http\Controllers\Backend\ManageMemberController@delete_member');
 //manage hotel
 Route::get('/backend/hotel_profile','App\Http\Controllers\Backend\ManageHotelController@get_index');
 Route::get('/backend/admin/add-hotel','App\Http\Controllers\Backend\ManageHotelController@get_form');

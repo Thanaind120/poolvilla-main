@@ -5,65 +5,91 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Member;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+
 class ManageMemberController extends Controller
 {
     
-    public function get_index() {
-        $user=User::where('position','member')->get();
-        $data=array(
-            'user'=>$user,
+    public function get_index() 
+    {
+        $member = Member::get();
+        $data = array(
+            'member'=>$member,
         );
         return  view('backend.admin.manage_member.index',$data);
     }
-    public function get_form() {
-        // $user=User::where('position','admin')->get();
-        // $data=array(
-        //     'user'=>$user,
-        // );
+
+    public function get_form() 
+    {
         return  view('backend.admin.manage_member.form');
     }
-    public function get_form2($p) {
-        $user=User::where('id',$p)->first();
-        $data=array(
-            'user'=>$user,
+
+    public function get_form2($p) 
+    {
+        $member = Member::where('id',$p)->first();
+        $data = array(
+            'member'=>$member,
         );
         return  view('backend.admin.manage_member.form',$data);
     }
-    public function save_form(Request $r){
+
+    public function save_form(Request $r)
+    {
         // save
-        if($r->type==1){        
-            $user=new User();
-            $user->name=$r->name;
-            $user->email=$r->email;
-            $user->position="member";
-            $user->password=Hash::make('m123456');
-            $user->status=1;
-            $user->save();
+        if($r->type==1){   
+            $date = date('Y-m-d');
+            $newDate = \Carbon\Carbon::createFromFormat('Y-m-d', $date)->format('Y-m-d');
+            $time = date('H:i:s');
+            $newTime = \Carbon\Carbon::createFromFormat('H:i:s', $time)->format('H:i:s');
+            Member::create([
+                'id' => $r->id,
+                'firstname' => $r->firstname,
+                'lastname' => $r->lastname,
+                'email' => $r->email,
+                'password' => Hash::make('p123456'),
+                'status' => 1,
+                'save_date' => $newDate,
+                'save_time' => $newTime,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ]);
             return redirect()->to('/backend/member_profile')->with('success','Save Data Success');
         }
+        //update
         if($r->type==2){
-            $user=User::where('id',$r->id)->first();
-            $user->name=$r->name;
-            $user->email=$r->email;
-            $user->position=$r->position;
-          
             if(isset($r->status)){
-                $user->status=1;
+                $status = 1;
             }else{
-                $user->status=0;
+                $status = 0;
             }
-            $user->save();
-            return redirect()->to('/backend/member_profile')->with('success','Update Data Success');
+            Member::find($r->id)->update([
+                'firstname' => $r->firstname,
+                'lastname' => $r->lastname,
+                'email' => $r->email,
+                'status' => $status,
+                'updated_at' => Carbon::now()
+            ]);
+            return redirect()->to('/backend/member_profile')->with('success','Save Data Success');
         }
     }
 
-    public function reset_password(Request $r) {
-        $user=User::where('id',$r->id)->first();
-        $user->password=Hash::make('m123456');
-        $user->save();
+    public function reset_password(Request $r) 
+    {
+        $member = Member::where('id',$r->id)->first();
+        $member->password=Hash::make('p123456');
+        $member->save();
         return redirect()->to('/backend/member_profile')->with('success','Reset Password Success');
+    }
+
+    public function delete_member(Request $r) 
+    {
+       $member = Member::where('id',$r->id)->first();
+       $member->status=0;
+       $member->save();
+        return  redirect()->to('/backend/member_profile')->with('success','Delete Banner Success');
     }
 
 }
