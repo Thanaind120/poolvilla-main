@@ -21,6 +21,13 @@ Route::POST('backend/admin_profile/save','App\Http\Controllers\Backend\AdminCont
 Route::POST('/backend/admin_reset','App\Http\Controllers\Backend\AdminController@reset_password');
 Route::get('/backend/admin/update_profile/{p}','App\Http\Controllers\Backend\AdminController@get_form2');
 
+//manage role
+Route::get('/backend/role','App\Http\Controllers\Backend\ManageRoleController@get_index');
+Route::get('/backend/admin/add-role','App\Http\Controllers\Backend\ManageRoleController@get_form');
+Route::POST('backend/role_profile/save','App\Http\Controllers\Backend\ManageRoleController@save_form');
+Route::POST('/backend/role_reset','App\Http\Controllers\Backend\ManageRoleController@reset_password');
+Route::get('/backend/admin/update_role/{p}','App\Http\Controllers\Backend\ManageRoleController@get_form2');
+Route::POST('/backend/role_profile/delete','App\Http\Controllers\Backend\ManageRoleController@delete_role');
 //manage member
 Route::get('/backend/member_profile','App\Http\Controllers\Backend\ManageMemberController@get_index');
 Route::get('/backend/admin/add-member','App\Http\Controllers\Backend\ManageMemberController@get_form');

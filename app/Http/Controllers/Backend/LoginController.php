@@ -26,7 +26,7 @@ class LoginController extends Controller
 
          
               Auth::guard('backend')->login($u);
-              if(auth::guard('backend')->user()->position=="admin"||auth::guard('backend')->user()->position=="super_admin"){
+              if(auth::guard('backend')->user()->position == 1 || auth::guard('backend')->user()->position == 2){
                 return redirect()->to('/backend/index');
               }
              

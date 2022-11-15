@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use App\Models\User;
 use App\Models\PartnerUsers;
 use App\Models\Bank;
@@ -15,8 +16,10 @@ class ManageHotelController extends Controller
     
     public function get_index() {
         $user=PartnerUsers::where('position','partner')->get();
+        $check = DB::table('role_permission')->leftJoin('role', 'role_permission.ref_role', '=', 'role.id')->where('role_permission.ref_role', auth::user()->position)->first();
         $data=array(
             'user'=>$user,
+            'check'=>$check,
         );
         return  view('backend.admin.manage_hotel.index',$data);
     }

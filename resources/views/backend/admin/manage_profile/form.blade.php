@@ -50,10 +50,10 @@
               <div class="col-md-10">
                 <select name="position" class="form-control  col-md-8" required >
                   <option value="" disabled>Select</option>                
-                  <option value="super_admin"{{ ($user->position=="super_admin" )?'selected':'' }}>Super Admin</option>
-                      <option value="admin"{{ ($user->position=="admin" )?'selected':'' }}>Admin</option>
-                      <option value="hotel"{{ ($user->position=="hotel" )?'selected':'' }}>Hotel</option>
-                      <option value="member"{{ ($user->position=="member" )?'selected':'' }}>Member</option>
+                  <option value="1"{{ ($user->position=="1" )?'selected':'' }}>Super Admin</option>
+                      <option value="2"{{ ($user->position=="2" )?'selected':'' }}>Admin</option>
+                      <option value="3"{{ ($user->position=="3" )?'selected':'' }}>Hotel</option>
+                      <option value="4"{{ ($user->position=="4" )?'selected':'' }}>Member</option>
                    
          
                 </select>
@@ -79,8 +79,8 @@
               <div class="col-md-10">
                 <select name="position" class="form-control  col-md-8" required >
                   <option value="" selected disabled>Select</option>                
-                  <option value="super_admin">Super Admin</option>
-                      <option value="admin">Admin</option>
+                  <option value="1">Super Admin</option>
+                      <option value="2">Admin</option>
                       
          
                 </select>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -13,7 +14,8 @@ class CountryController extends Controller
     
     public function backend_country() {
         $country = DB::select("select * from db_country order by country_id desc");
-        return  view('backend.country.backend_country',compact('country'));
+        $check = DB::table('role_permission')->leftJoin('role', 'role_permission.ref_role', '=', 'role.id')->where('role_permission.ref_role', auth::user()->position)->first();
+        return  view('backend.country.backend_country',compact('country','check'));
     }
 
     public function backend_country_add() {
@@ -50,7 +52,8 @@ class CountryController extends Controller
     public function backend_country_city($id) {
         $country = DB::select("select * from db_country where country_id = '$id'");
         $city = DB::select("select * from db_city where country_id = '$id'");
-        return  view('backend.country.city.backend_country_city',compact('country','city'));
+        $check = DB::table('role_permission')->leftJoin('role', 'role_permission.ref_role', '=', 'role.id')->where('role_permission.ref_role', auth::user()->position)->first();
+        return  view('backend.country.city.backend_country_city',compact('country','city','check'));
     }
 
     public function backend_country_city_add($id) {

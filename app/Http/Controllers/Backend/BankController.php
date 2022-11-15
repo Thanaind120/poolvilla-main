@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 class BankController extends Controller
@@ -14,8 +15,10 @@ class BankController extends Controller
     
    public function get_index(){
     $bank = DB::select("select * from db_bank  order by id desc");
+    $check = DB::table('role_permission')->leftJoin('role', 'role_permission.ref_role', '=', 'role.id')->where('role_permission.ref_role', auth::user()->position)->first();
     $data = array(
         'bank'=>$bank,
+        'check'=>$check,
     );
        return view('backend.banking.index',$data);
    }
@@ -63,8 +66,10 @@ class BankController extends Controller
     // bank system
     public function get_index_system(){
         $bank = DB::select("select * from db_bank_system  order by id desc");
+        $check = DB::table('role_permission')->leftJoin('role', 'role_permission.ref_role', '=', 'role.id')->where('role_permission.ref_role', auth::user()->position)->first();
         $data = array(
             'bank'=>$bank,
+            'check'=>$check,
         );
            return view('backend.banking_system.index',$data);
        }

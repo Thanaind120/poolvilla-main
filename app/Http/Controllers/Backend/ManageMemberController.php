@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use App\Models\User;
 use App\Models\Member;
 use Illuminate\Support\Facades\Hash;
@@ -16,8 +18,10 @@ class ManageMemberController extends Controller
     public function get_index() 
     {
         $member = Member::get();
+        $check = DB::table('role_permission')->leftJoin('role', 'role_permission.ref_role', '=', 'role.id')->where('role_permission.ref_role', auth::user()->position)->first();
         $data = array(
             'member'=>$member,
+            'check'=>$check,
         );
         return  view('backend.admin.manage_member.index',$data);
     }

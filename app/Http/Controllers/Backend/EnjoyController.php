@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -12,8 +13,9 @@ class EnjoyController extends Controller
 {
     
     public function backend_enjoy_with() {
-       $enjoy = DB::select("select * from db_enjoy_with order by enjoy_id desc");
-        return  view('backend.enjoy_with.backend_enjoy_with',compact('enjoy'));
+        $enjoy = DB::select("select * from db_enjoy_with order by enjoy_id desc");
+        $check = DB::table('role_permission')->leftJoin('role', 'role_permission.ref_role', '=', 'role.id')->where('role_permission.ref_role', auth::user()->position)->first();
+        return  view('backend.enjoy_with.backend_enjoy_with',compact('enjoy','check'));
     }
 
     public function backend_enjoy_with_add() {

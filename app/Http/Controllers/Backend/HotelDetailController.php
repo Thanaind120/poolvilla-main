@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use App\Models\User;
 use App\Models\PartnerUsers;
 use Illuminate\Support\Facades\Hash;
@@ -23,10 +24,12 @@ class HotelDetailController extends Controller
 
         $poolvilla=Poolvilla::where('user_id',$id)->get();
         $user=PartnerUsers::where('id',$id)->first();
+        $check = DB::table('role_permission')->leftJoin('role', 'role_permission.ref_role', '=', 'role.id')->where('role_permission.ref_role', auth::user()->position)->first();
     //   dd($user);
         $data=array(
             'poolvilla'=>$poolvilla,
             'user'=>$user,
+            'check'=>$check,
         );
         return  view('backend.admin.hotel.index',$data);
     }

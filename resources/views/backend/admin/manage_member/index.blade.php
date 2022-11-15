@@ -22,6 +22,7 @@
                     <div class="section-body">
 
                         <div class="card">
+                            @if($check->page_create == 1)
                             <div class="card-header">
                                 <!-- add user button -->
                                 <div class="text-right">
@@ -29,6 +30,7 @@
                                             class="fa fa-plus"></i> add</a>
                                 </div><br>
                             </div>
+                            @endif
                             <div class="card-body ">
                                 <div class="table-responsive">
                                     <table id="simpletable" class="table table-bordered">
@@ -39,8 +41,10 @@
                                                 <th scope="col"><i class="fa fa-envelope"></i> E-Mail</th>
                                                 <th scope="col"><i class="fa fa-phone"></i> Phone Number</th>
                                                 <th scope="col"><i class="fa fa-check"></i> Status</th>
+                                                @if($check->page_edit == 1 || $check->page_delete == 1)
                                                 <th scope="col"><i class="fa fa-key"></i> Password</th>
                                                 <th scope="col"><i class="fa fa-cog"></i> Tools</th>
+                                                @endif
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -57,6 +61,7 @@
                                                     <span class="text-danger">Deactive</span>
                                                     @endif
                                                 </td>
+                                                @if($check->page_edit == 1 || $check->page_delete == 1)
                                                 <td>
                                                     <button class="btn btn-primary"
                                                         onclick="confirm_reset('{{$u->id}}')">Reset</button>
@@ -68,6 +73,7 @@
                                                     {{-- <button class="btn btn-danger"
                                                         onclick="confirm_delete('{{$u->id}}')">Delete</button> --}}
                                                 </td>
+                                                @endif
                                             </tr>
                                             @endforeach
                                         </tbody>

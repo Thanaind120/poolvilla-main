@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use App\Models\User;
 use App\Models\Facilities;
 use App\Models\Icon;
@@ -16,8 +18,10 @@ class FacilitiesController extends Controller
     
     public function get_index() {
         $facilities=Facilities::where('status',1)->orderby('id','desc')->get();
+        $check = DB::table('role_permission')->leftJoin('role', 'role_permission.ref_role', '=', 'role.id')->where('role_permission.ref_role', auth::user()->position)->first();
         $data=array(
             'facilities'=>$facilities,
+            'check'=>$check,
         );
         return  view('backend.facilities.index',$data);
     }
