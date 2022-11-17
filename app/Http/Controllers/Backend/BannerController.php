@@ -64,7 +64,8 @@ class BannerController extends Controller
     {
         // dd($r);
         $banner=Banner::where('id',$r->id)->first();
-        if(isset($r->banner_image)){
+        // if(isset($r->banner_image)){
+        if($r->banner_image != ''){
             // $name = date('YmdHis').'_icon'.'.'.
             // $r->banner_image->getClientOriginalExtension();
             $r->banner_image->move("frontend_assets/banner/",$banner->banner_image); 
