@@ -108,7 +108,7 @@ class ManageRoleController extends Controller
        $role_permission->page_delete = NULL;
        $role->save();
        $role_permission->save();
-        return  redirect()->to('/backend/role')->with('success','Delete Banner Success');
+        return  redirect()->to('/backend/role')->with('success','Delete Role Success');
     }
 
 }

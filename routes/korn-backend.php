@@ -76,6 +76,16 @@ Route::POST('backend/banner/save','App\Http\Controllers\Backend\BannerController
 Route::POST('backend/banner/update','App\Http\Controllers\Backend\BannerController@update_banner');
 Route::POST('backend/banner/delete','App\Http\Controllers\Backend\BannerController@delete_banner');
 
+//discount rooms
+Route::get('backend/admin/banner/discount-rooms/{id}','App\Http\Controllers\Backend\DiscountRoomsController@get_index');
+Route::get('backend/banner/discount-rooms/getRoom/{id}','App\Http\Controllers\Backend\DiscountRoomsController@getRoom');
+Route::get('backend/banner/discount-rooms/getDiscount/{id}','App\Http\Controllers\Backend\DiscountRoomsController@getDiscount');
+Route::get('backend/banner/discount-rooms/add/{id}','App\Http\Controllers\Backend\DiscountRoomsController@get_add');
+Route::get('backend/banner/discount-rooms/edit/{id}/{id_roomdetails}','App\Http\Controllers\Backend\DiscountRoomsController@get_edit');
+Route::POST('backend/banner/discount-rooms/save/{id}','App\Http\Controllers\Backend\DiscountRoomsController@save_discount_rooms');
+Route::POST('backend/banner/discount-rooms/update/{id}/{id_roomdetails}','App\Http\Controllers\Backend\DiscountRoomsController@update_discount_rooms');
+Route::POST('backend/banner/discount-rooms/delete/{id}','App\Http\Controllers\Backend\DiscountRoomsController@delete_discount_rooms');
+
 // pool villa manage page
 route::POST('backend/manage_poolvilla_pages','App\Http\Controllers\Backend\ManagePoolVillaPagesController@manage_page');
 route::get('backend/admin/more_about_poolvilla/{id}','App\Http\Controllers\Backend\ManagePoolVillaPagesController@get_more_about_poovilla');

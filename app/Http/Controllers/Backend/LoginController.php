@@ -36,11 +36,10 @@ class LoginController extends Controller
               }
     }
 
-    public function logout(){
-      Auth::guard('backend')->logout();
-
-     
-  
-      return redirect()->to('backend/login');
+    public function logout(Request $request)
+    {
+        Auth::guard('backend')->logout();
+        $request->session()->invalidate();
+        return redirect()->to('backend/login');
     }
 }

@@ -38,8 +38,13 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col" class="text-center"><i class="fa fa-user "></i> Image
+                                                <th scope="col" class="text-center"><i class="fa fa-user"></i> Image
                                                 </th>
+                                                @if($check->page_view == 1)
+                                                <th scope="col" class="text-center"><i class="fa fa-home"></i> Discount
+                                                    Rooms
+                                                </th>
+                                                @endif
                                                 @if($check->page_edit == 1 || $check->page_delete == 1)
                                                 <th scope="col" class="text-center"><i class="fa fa-cog "></i> Tools
                                                 </th>
@@ -53,7 +58,14 @@
 
                                                 <td class="text-center"><img
                                                         src="{{asset('frontend_assets/banner/'.$b->banner_image)}}"
-                                                        width="250px" height="100px" class="mt-1"></td>
+                                                        width="250px" height="100px" class="mt-1">
+                                                </td>
+                                                @if($check->page_view == 1)
+                                                <td class="text-center">
+                                                    <a class="btn btn-info"
+                                                        href="{{url('backend/admin/banner/discount-rooms/'.$b->id)}}">View</a>
+                                                </td>
+                                                @endif
                                                 @if($check->page_edit == 1 || $check->page_delete == 1)
                                                 <td class="text-center">
                                                     <!-- <button class="btn btn-warning" data-toggle="modal" data-target="#edit_banner" onclick="edit_banner('{{$b->id}}')">Edit</button> -->
@@ -146,7 +158,7 @@
         <input type="hidden" name="id" id="delete_id2">
     </form>
     <script>
-        // $('#simpletable').dataTable();
+        $('#simpletable').dataTable();
         function edit_banner(id) {
             $('#edit_banner_id').val(id);
         }
