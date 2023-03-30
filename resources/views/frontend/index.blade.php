@@ -2,54 +2,54 @@
 <html lang="th">
 
 <head>
-    <title>Poolvilla</title>
+    <title>@lang('lang.poolvilla')</title>
     @include('frontend/inc_header')
-    <link rel="stylesheet" href="{{asset('assets_frontend/css/owl.carousel.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets_frontend/css/owl.theme.default.min.css')}}">
-    <script src="{{asset('assets_frontend/js/owl.carousel.min.js')}}"></script>
+    <link rel="stylesheet" href="{{ asset('assets_frontend/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets_frontend/css/owl.theme.default.min.css') }}">
+    <script src="{{ asset('assets_frontend/js/owl.carousel.min.js') }}"></script>
+    
 </head>
 
 <body>
     @include('sweetalert')
     @include('frontend/inc_navbar_scroll')
     <div class="banner">
-        <img src="{{asset('assets_frontend/images/banner_index.jpg')}}" class="banner-index">
+        <img src="{{ asset('assets_frontend/images/banner_index.jpg') }}" class="banner-index">
         <div class="centered_box">
-            <div class="text-banner-index">Get the best Pool Villa around Asia</div>
+            <div class="text-banner-index">@lang('lang.get_thebest_poolvilla_aroundasia')</div>
             <div class="box-search-destination">
                 <form action="{{ route('search.get') }}" method="get" autocomplete="off">
-                    <div class="autocomplete ">
+                    <div class="autocomplete">
                         <input id="myInput" class="form-control empty orange" type="text" name="province" id="iconified"
-                            placeholder="&#xF002;  Where  are  you  going ?">
+                            placeholder="&#xF002; @lang('lang.where_are_you_going')">
                     </div>
-                    <!--<input class="form-control empty orange" type="text" id="iconified" placeholder="&#xF002;  Where  are  you  going ?"aria-label="default input example">-->
                     <div class="row mt-2">
                         <div class="col-lg-5">
                             <div class="bg-white-form">
                                 <div class="row g-0">
                                     <div class="col-6">
                                         <div class="line-check-in">
-                                            <label class="top-text-form" for="check-in">Check in</label>
+                                            <label class="top-text-form" for="check-in">@lang('lang.check_in')</label>
                                             <div class="row g-0">
                                                 <div class="col-2 text-center text-orange">
                                                     <i class="far fa-calendar check-calender"></i>
                                                 </div>
                                                 <div class="col-10">
                                                     <input class="form-control orange-check check-in-out"
-                                                        id="datepicker" type="text" placeholder="mm/dd/yyyy" name="ci">
+                                                        id="datepicker" type="text" placeholder="@lang('lang.date')" name="ci">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-6">
-                                        <label class="top-text-form" for="check-in">Check out</label>
+                                        <label class="top-text-form" for="check-in">@lang('lang.check_out')</label>
                                         <div class="row g-0">
                                             <div class="col-2 text-center text-orange">
                                                 <i class="far fa-calendar check-calender"></i>
                                             </div>
                                             <div class="col-10">
                                                 <input class="form-control orange-check check-in-out" id="datepicker2"
-                                                    type="text" placeholder="mm/dd/yyyy" name="co">
+                                                    type="text" placeholder="@lang('lang.date')" name="co">
                                             </div>
                                         </div>
                                     </div>
@@ -58,25 +58,24 @@
                         </div>
                         <div class="col-lg-7">
                             <div class="bg-white-form">
-                                <label class="top-text-form" for="check-in">Guest</label>
+                                <label class="top-text-form" for="check-in">@lang('lang.guest')</label>
                                 <div class="row g-0">
                                     <div class="col-1 text-center text-orange">
                                         <i class="fas fa-user check-calender"></i>
                                     </div>
                                     <div class="col-11">
                                         <div class="row g-2">
-
                                             <div class="col-4">
                                                 <div class="row g-2">
                                                     <label for="inputPassword"
-                                                        class="col-4 text-tiny text-orange">Adult</label>
+                                                        class="col-4 text-tiny text-orange">@lang('lang.adult')</label>
 
                                                     <div class="col-8 mt-0">
                                                         <div class="input-group input-number">
                                                             <button class="btn sub" type="button" id="sub">-</button>
                                                             <input class="input-number border-0 text-center field"
                                                                 placeholder="1" type="text" id="demoInput" name="adult"
-                                                                value="">
+                                                                value="1">
                                                             <button class="btn add" type="button" id="add">+</button>
                                                         </div>
                                                     </div>
@@ -85,13 +84,13 @@
                                             <div class="col-4">
                                                 <div class="row g-2">
                                                     <label for="inputPassword"
-                                                        class="col-4 text-tiny text-orange">Kid</label>
+                                                        class="col-4 text-tiny text-orange">@lang('lang.kid')</label>
                                                     <div class="col-8 mt-0">
                                                         <div class="input-group input-number">
                                                             <button class="btn sub2" type="button" id="sub2">-</button>
                                                             <input class="input-number border-0 text-center field2"
                                                                 placeholder="1" type="text" id="demoInput" name="kid"
-                                                                value="">
+                                                                value="1">
                                                             <button class="btn add2" type="button" id="add2">+</button>
                                                         </div>
                                                     </div>
@@ -100,13 +99,13 @@
                                             <div class="col-4">
                                                 <div class="row g-2">
                                                     <label for="inputPassword"
-                                                        class="col-4 text-tiny text-orange">Room</label>
+                                                        class="col-4 text-tiny text-orange">@lang('lang.room')</label>
                                                     <div class="col-8 mt-0">
                                                         <div class="input-group input-number">
                                                             <button class="btn sub3" type="button" id="sub3">-</button>
                                                             <input class="input-number border-0 text-center field3"
                                                                 placeholder="1" type="text" id="demoInput" name="ro"
-                                                                value="">
+                                                                value="1">
                                                             <button class="btn add3" type="button" id="add3">+</button>
                                                         </div>
                                                     </div>
@@ -118,56 +117,33 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn-search">Search</button>
+                    <button type="submit" class="btn-search">@lang('lang.search')</button>
                 </form>
             </div>
         </div>
     </div>
     <div class="space-footer">
         <div class="container my-5">
-            <div class="owl-carousel slide-carousel-promotions owl-theme  recommend">
-                <a class="" href="{{url('promotion')}}">
+            <div class="owl-carousel slide-carousel-promotions owl-theme recommend">
+                @foreach ($banner as $key => $val)
+                <a class="" href="{{ url('/promotion/id='.$val->id) }}">
                     <div class="">
                         <div class="">
-                            <img src="{{asset('assets_frontend/images/icon_enjoy-02.jpg')}}" class="card-img-top-travel"
+                            <img src="{{ asset('frontend_assets/banner/'.$val->banner_image) }}" class="card-img-top-travel"
                                 alt="...">
                         </div>
                     </div>
                 </a>
-                <a class="" href="{{url('promotion')}}">
-                    <div class="">
-                        <div class="">
-                            <img src="{{asset('assets_frontend/images/promotion.jpg')}}" class="card-img-top-travel"
-                                alt="...">
-                        </div>
-                    </div>
-                </a>
-                <a class="" href="{{url('promotion')}}">
-                    <div class="">
-                        <div class="">
-                            <img src="{{asset('assets_frontend/images/promotion.jpg')}}" class="card-img-top-travel"
-                                alt="...">
-                        </div>
-                    </div>
-                </a>
-                <a class="" href="{{url('promotion')}}">
-                    <div class="">
-                        <div class="">
-                            <img src="{{asset('assets_frontend/images/promotion.jpg')}}" class="card-img-top-travel"
-                                alt="...">
-                        </div>
-                    </div>
-                </a>
+                @endforeach
             </div>
         </div>
     </div>
     <div class="container my-5">
         <div class="row pt-sm-5">
             <div class="col-sm-3 mb-2">
-                <div class="head-text-index-df">ยังไม่รู้จะไปไหน ?</div>
-                <div class="detail-text mt-3">สถานที่ที่มีผู้คนเดินทางไปพักผ่อนมากที่สุด
-                    เราอยากให้คุณได้สัมผัสกับบรรยากาศและที่พักดีๆ</div>
-                <a class="btn-sign index mt-xl-5" href="{{url('select-country')}}">ดูทั้งหมด</a>
+                <div class="head-text-index-df">@lang('lang.i_still')</div>
+                <div class="detail-text mt-3">@lang('lang.the_place')</div>
+                <a class="btn-sign index mt-xl-5" href="{{ url('/select-country') }}">@lang('lang.see_all')</a>
             </div>
             <div class="col-sm-9">
                 <!-- destination slide -->
@@ -177,9 +153,10 @@
                             @foreach ($country as $key => $val)
                             <div class="item box-destination">
                                 <a href="{{ route('select_country.get', ['id' => $val->country_id]) }}">
-                                    <img src="{{asset('assets_frontend/images/destination1.jpg')}}" class="img-des">
+                                    <img src="{{ asset('assets_frontend/images/destination1.jpg') }}" class="img-des">
                                     <div class="bottom-left">
                                         <p class="name-text text-white">{{ $val->country_name }}</p>
+                                        {{-- {{ $val["country_name_".Session::get('locale')]}} --}}
                                     </div>
                                 </a>
                             </div>
@@ -192,19 +169,19 @@
         </div>
     </div>
     <div class="container my-5">
-        <div class="head-text-index">วันหยุดนี้ทำกิจกรรมอะไรดี?</div>
+        <div class="head-text-index">@lang('lang.what_activities')</div>
         <div class="line-bottom-head-text"></div>
         <div class="row mt-5">
             <div class="col-lg-3 col-6">
                 <div class="myDIV">
                     <div class="overlay-img">
                         <div class="">
-                            <a href="{{url('tourist_attraction_detail')}}">
+                            <a href="{{ url('/tourist_attraction_detail') }}">
                                 <div class="HoverVideo">
                                     <div class="HoverVideo__wrapper">
                                         <div class="HoverVideo__videoBox thumb">
                                             <video class="video" loop preload="yes" muted>
-                                                <source src="{{asset('assets_frontend/images/video_1.mp4')}}"
+                                                <source src="{{ asset('assets_frontend/images/video_1.mp4') }}"
                                                     type="video/mp4">
                                             </video>
                                         </div>
@@ -214,7 +191,7 @@
                         </div>
                     </div>
                     <div class="box-body">
-                        <a href="{{url('tourist_attraction_detail')}}">
+                        <a href="{{ url('/tourist_attraction_detail') }}">
                             <p class="name-text text-bold">place</p>
                         </a>
                         <p class="detail-text text-orange">cities , country</p>
@@ -225,12 +202,12 @@
                 <div class="myDIV">
                     <div class="overlay-img">
                         <div class="">
-                            <a href="{{url('tourist_attraction_detail')}}">
+                            <a href="{{ url('/tourist_attraction_detail') }}">
                                 <div class="HoverVideo">
                                     <div class="HoverVideo__wrapper">
                                         <div class="HoverVideo__videoBox thumb">
                                             <video class="video" loop preload="yes" muted>
-                                                <source src="{{asset('assets_frontend/images/video_2.mp4')}}"
+                                                <source src="{{ asset('assets_frontend/images/video_2.mp4') }}"
                                                     type="video/mp4">
                                             </video>
                                         </div>
@@ -240,34 +217,7 @@
                         </div>
                     </div>
                     <div class="box-body">
-                        <a href="{{url('tourist_attraction_detail')}}">
-                            <p class="name-text text-bold">place</p>
-                        </a>
-                        <p class="detail-text text-orange">cities , country</p>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-6">
-                <div class="myDIV">
-                    <div class="overlay-img">
-                        <div class="">
-                            <a href="{{url('tourist_attraction_detail')}}">
-                                <div class="HoverVideo">
-                                    <div class="HoverVideo__wrapper">
-                                        <div class="HoverVideo__videoBox thumb">
-                                            <video class="video" loop preload="yes" muted>
-                                                <source src="{{asset('assets_frontend/images/video_3.mp4')}}"
-                                                    type="video/mp4">
-                                            </video>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="box-body">
-                        <a href="{{url('tourist_attraction_detail')}}">
+                        <a href="{{ url('/tourist_attraction_detail') }}">
                             <p class="name-text text-bold">place</p>
                         </a>
                         <p class="detail-text text-orange">cities , country</p>
@@ -279,12 +229,12 @@
                 <div class="myDIV">
                     <div class="overlay-img">
                         <div class="">
-                            <a href="{{url('tourist_attraction_detail')}}">
+                            <a href="{{ url('/tourist_attraction_detail') }}">
                                 <div class="HoverVideo">
                                     <div class="HoverVideo__wrapper">
                                         <div class="HoverVideo__videoBox thumb">
                                             <video class="video" loop preload="yes" muted>
-                                                <source src="{{asset('assets_frontend/images/video_4.mp4')}}"
+                                                <source src="{{ asset('assets_frontend/images/video_3.mp4') }}"
                                                     type="video/mp4">
                                             </video>
                                         </div>
@@ -294,7 +244,34 @@
                         </div>
                     </div>
                     <div class="box-body">
-                        <a href="{{url('tourist_attraction_detail')}}">
+                        <a href="{{ url('/tourist_attraction_detail') }}">
+                            <p class="name-text text-bold">place</p>
+                        </a>
+                        <p class="detail-text text-orange">cities , country</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+                <div class="myDIV">
+                    <div class="overlay-img">
+                        <div class="">
+                            <a href="{{ url('/tourist_attraction_detail') }}">
+                                <div class="HoverVideo">
+                                    <div class="HoverVideo__wrapper">
+                                        <div class="HoverVideo__videoBox thumb">
+                                            <video class="video" loop preload="yes" muted>
+                                                <source src="{{ asset('assets_frontend/images/video_4.mp4') }}"
+                                                    type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <a href="{{ url('/tourist_attraction_detail') }}">
                             <p class="name-text text-bold">place</p>
                         </a>
                         <p class="detail-text text-orange">cities , country</p>
@@ -303,17 +280,17 @@
                 </div>
             </div>
         </div>
-        <a href="{{url('tourist-attraction')}}">
+        <a href="{{ url('/tourist-attraction') }}">
             <div class="row justify-content-center">
                 <div class="col-sm-2 col-6 mt-sm-5 mt-2">
-                    <div href="{{url('tourist-attraction')}}" class="btn-border-grey">ดูทั้งหมด</div>
+                    <div href="{{ url('/tourist-attraction') }}" class="btn-border-grey">@lang('lang.see_all')</div>
                 </div>
             </div>
         </a>
     </div>
     <div class="bg-grey pb-5">
         <div class="container">
-            <div class="head-text-index-df">เราแนะนำให้คุณไป</div>
+            <div class="head-text-index-df">@lang('lang.we_advise')</div>
             <div class="line-bottom-head-text-side"></div>
             <div class="scroll-bar-wrap">
                 <div class="scroll-box">
@@ -364,7 +341,7 @@
                                 type="button" role="tab" aria-controls="pills-10" aria-selected="false">ทุ่งนา</button>
                         </li>
                         <li class="nav-item">
-                            <a href="{{url('category')}}" class="nav-link btn-more">เพิ่มเติม</a>
+                            <a href="{{ url('/category') }}" class="nav-link btn-more">เพิ่มเติม</a>
                         </li>
                     </ul>
                 </div>
@@ -375,9 +352,9 @@
                     <div class="row">
                         <div class="col-lg-2 col-sm-4 col-6 mb-3">
                             <div class="">
-                                <a href="{{url('select-rooms')}}">
+                                <a href="{{ url('/select-rooms') }}">
                                     <div class="img-cat">
-                                        <img src="{{asset('assets_frontend/images/recomment%20(1).jpg')}}"
+                                        <img src="{{ asset('assets_frontend/images/recomment%20(1).jpg') }}"
                                             class="img-des pool" alt="...">
                                     </div>
                                 </a>
@@ -423,9 +400,9 @@
                         </div>
                         <div class="col-lg-2 col-sm-4 col-6 mb-3">
                             <div class="">
-                                <a href="{{url('select-rooms')}}">
+                                <a href="{{ url('/select-rooms') }}">
                                     <div class="img-cat">
-                                        <img src="{{asset('assets_frontend/images/recomment%20(1).jpg')}}"
+                                        <img src="{{ asset('assets_frontend/images/recomment%20(1).jpg') }}"
                                             class="img-des pool" alt="...">
                                     </div>
                                 </a>
@@ -471,9 +448,9 @@
                         </div>
                         <div class="col-lg-2 col-sm-4 col-6 mb-3">
                             <div class="">
-                                <a href="{{url('select-rooms')}}">
+                                <a href="{{ url('/select-rooms') }}">
                                     <div class="img-cat">
-                                        <img src="{{asset('assets_frontend/images/recomment%20(1).jpg')}}"
+                                        <img src="{{ asset('assets_frontend/images/recomment%20(1).jpg') }}"
                                             class="img-des pool" alt="...">
                                     </div>
                                 </a>
@@ -519,9 +496,9 @@
                         </div>
                         <div class="col-lg-2 col-sm-4 col-6 mb-3">
                             <div class="">
-                                <a href="{{url('select-rooms')}}">
+                                <a href="{{ url('/select-rooms') }}">
                                     <div class="img-cat">
-                                        <img src="{{asset('assets_frontend/images/recomment%20(1).jpg')}}"
+                                        <img src="{{ asset('assets_frontend/images/recomment%20(1).jpg') }}"
                                             class="img-des pool" alt="...">
                                     </div>
                                 </a>
@@ -567,9 +544,9 @@
                         </div>
                         <div class="col-lg-2 col-sm-4 col-6 mb-3">
                             <div class="">
-                                <a href="{{url('select-rooms')}}">
+                                <a href="{{ url('/select-rooms') }}">
                                     <div class="img-cat">
-                                        <img src="{{asset('assets_frontend/images/recomment%20(1).jpg')}}"
+                                        <img src="{{ asset('assets_frontend/images/recomment%20(1).jpg') }}"
                                             class="img-des pool" alt="...">
                                     </div>
                                 </a>
@@ -615,9 +592,9 @@
                         </div>
                         <div class="col-lg-2 col-sm-4 col-6 mb-3">
                             <div class="">
-                                <a href="{{url('select-rooms')}}">
+                                <a href="{{ url('/select-rooms') }}">
                                     <div class="img-cat">
-                                        <img src="{{asset('assets_frontend/images/recomment%20(1).jpg')}}"
+                                        <img src="{{ asset('assets_frontend/images/recomment%20(1).jpg') }}"
                                             class="img-des pool" alt="...">
                                     </div>
                                 </a>
@@ -663,9 +640,9 @@
                         </div>
                         <div class="col-lg-2 col-sm-4 col-6 mb-3">
                             <div class="">
-                                <a href="{{url('select-rooms')}}">
+                                <a href="{{ url('/select-rooms') }}">
                                     <div class="img-cat">
-                                        <img src="{{asset('assets_frontend/images/recomment%20(1).jpg')}}"
+                                        <img src="{{ asset('assets_frontend/images/recomment%20(1).jpg') }}"
                                             class="img-des pool" alt="...">
                                     </div>
                                 </a>
@@ -711,9 +688,9 @@
                         </div>
                         <div class="col-lg-2 col-sm-4 col-6 mb-3">
                             <div class="">
-                                <a href="{{url('select-rooms')}}">
+                                <a href="{{ url('/select-rooms') }}">
                                     <div class="img-cat">
-                                        <img src="{{asset('assets_frontend/images/recomment%20(1).jpg')}}"
+                                        <img src="{{ asset('assets_frontend/images/recomment%20(1).jpg') }}"
                                             class="img-des pool" alt="...">
                                     </div>
                                 </a>
@@ -759,9 +736,9 @@
                         </div>
                         <div class="col-lg-2 col-sm-4 col-6 mb-3">
                             <div class="">
-                                <a href="{{url('select-rooms')}}">
+                                <a href="{{ url('/select-rooms') }}">
                                     <div class="img-cat">
-                                        <img src="{{asset('assets_frontend/images/recomment%20(1).jpg')}}"
+                                        <img src="{{ asset('assets_frontend/images/recomment%20(1).jpg') }}"
                                             class="img-des pool" alt="...">
                                     </div>
                                 </a>
@@ -807,9 +784,9 @@
                         </div>
                         <div class="col-lg-2 col-sm-4 col-6 mb-3">
                             <div class="">
-                                <a href="{{url('select-rooms')}}">
+                                <a href="{{ url('/select-rooms') }}">
                                     <div class="img-cat">
-                                        <img src="{{asset('assets_frontend/images/recomment%20(1).jpg')}}"
+                                        <img src="{{ asset('assets_frontend/images/recomment%20(1).jpg') }}"
                                             class="img-des pool" alt="...">
                                     </div>
                                 </a>
@@ -855,9 +832,9 @@
                         </div>
                         <div class="col-lg-2 col-sm-4 col-6 mb-3">
                             <div class="">
-                                <a href="{{url('select-rooms')}}">
+                                <a href="{{ url('/select-rooms') }}">
                                     <div class="img-cat">
-                                        <img src="{{asset('assets_frontend/images/recomment%20(1).jpg')}}"
+                                        <img src="{{ asset('assets_frontend/images/recomment%20(1).jpg') }}"
                                             class="img-des pool" alt="...">
                                     </div>
                                 </a>
@@ -903,9 +880,9 @@
                         </div>
                         <div class="col-lg-2 col-sm-4 col-6 mb-3">
                             <div class="">
-                                <a href="{{url('select-rooms')}}">
+                                <a href="{{ url('/select-rooms') }}">
                                     <div class="img-cat">
-                                        <img src="{{asset('assets_frontend/images/recomment%20(1).jpg')}}"
+                                        <img src="{{ asset('assets_frontend/images/recomment%20(1).jpg') }}"
                                             class="img-des pool" alt="...">
                                     </div>
                                 </a>
@@ -950,10 +927,10 @@
                             </div>
                         </div>
                     </div>
-                    <a href="{{url('category_travel')}}">
+                    <a href="{{ url('/category_travel') }}">
                         <div class="row justify-content-center">
                             <div class="col-sm-2  col-6 mt-sm-5 mt-2">
-                                <div href="{{url('category_travel')}}" class="btn-border-grey">ดูทั้งหมด</div>
+                                <div href="{{ url('/category_travel') }}" class="btn-border-grey">ดูทั้งหมด</div>
                             </div>
                         </div>
                     </a>
@@ -970,14 +947,14 @@
             </div>
         </div>
         <div class="container">
-            <div class="head-text-index-df">เลือกที่เที่ยวตามสไตล์ที่ต้องการ</div>
+            <div class="head-text-index-df">@lang('lang.choose_a')</div>
             <div class="line-bottom-head-text-side"></div>
             <div class="row mt-4">
                 <div class="col-sm-4 col-6 mb-3">
-                    <a class="" href="{{url('category_travel')}}">
+                    <a class="" href="{{ url('/category_travel') }}">
                         <div class="row">
                             <div class="col-sm-7"><img
-                                    src="{{asset('assets_frontend/images/man-riding-his-surfboard-having-good-time.jpg')}}"
+                                    src="{{ asset('assets_frontend/images/man-riding-his-surfboard-having-good-time.jpg') }}"
                                     class="card-img-top-travel w-100" alt="..."></div>
                             <div class="col-sm-5 pt-xl-5 pt-sm-2 pl-3">
                                 <p class="detail-text text-bold text-center">Beach</p>
@@ -987,10 +964,10 @@
                     </a>
                 </div>
                 <div class="col-sm-4 col-6 mb-3">
-                    <a class="" href="{{url('category_travel')}}">
+                    <a class="" href="{{ url('/category_travel') }}">
                         <div class="row">
                             <div class="col-sm-7"><img
-                                    src="{{asset('assets_frontend/images/attractive-stylish-young-woman-khaki-dress-desert-traveling-africa-safari-wearing-hat-backpack-taking-photo-vintage-camera.png')}}"
+                                    src="{{ asset('assets_frontend/images/attractive-stylish-young-woman-khaki-dress-desert-traveling-africa-safari-wearing-hat-backpack-taking-photo-vintage-camera.png') }}"
                                     class="card-img-top-travel w-100" alt="..."></div>
                             <div class="col-sm-5 pt-xl-5 pt-sm-2 pl-3">
                                 <p class="detail-text text-bold text-center">Advanture</p>
@@ -1000,10 +977,10 @@
                     </a>
                 </div>
                 <div class="col-sm-4 col-6 mb-3">
-                    <a class="" href="{{url('category_travel')}}">
+                    <a class="" href="{{ url('/category_travel') }}">
                         <div class="row">
                             <div class="col-sm-7"><img
-                                    src="{{asset('assets_frontend/images/vertical-shot-motorbike-road-with-beautiful-view-mountains-kauai-hawaii.png')}}"
+                                    src="{{ asset('assets_frontend/images/vertical-shot-motorbike-road-with-beautiful-view-mountains-kauai-hawaii.png') }}"
                                     class="card-img-top-travel w-100" alt="..."></div>
                             <div class="col-sm-5 pt-xl-5 pt-sm-2 pl-3">
                                 <p class="detail-text text-bold text-center">Natural</p>
@@ -1014,10 +991,10 @@
                     </a>
                 </div>
                 <div class="col-sm-4 col-6 mb-3">
-                    <a class="" href="{{url('category_travel')}}">
+                    <a class="" href="{{ url('/category_travel') }}">
                         <div class="row">
                             <div class="col-sm-7"><img
-                                    src="{{asset('assets_frontend/images/rock-mountains-with-desert-background-nature-landscape%203.png')}}"
+                                    src="{{ asset('assets_frontend/images/rock-mountains-with-desert-background-nature-landscape%203.png') }}"
                                     class="card-img-top-travel w-100" alt="..."></div>
                             <div class="col-sm-5 pt-xl-5 pt-sm-2 pl-3">
                                 <p class="detail-text text-bold text-center">City</p>
@@ -1028,10 +1005,10 @@
                     </a>
                 </div>
                 <div class="col-sm-4 col-6 mb-3">
-                    <a class="" href="{{url('category_travel')}}">
+                    <a class="" href="{{ url('/category_travel') }}">
                         <div class="row">
                             <div class="col-sm-7"><img
-                                    src="{{asset('assets_frontend/images/camping-travel-tourism-hike-concept-young-man-setting-up-tent-outdoors%202.png')}}"
+                                    src="{{ asset('assets_frontend/images/camping-travel-tourism-hike-concept-young-man-setting-up-tent-outdoors%202.png') }}"
                                     class="card-img-top-travel w-100" alt="..."></div>
                             <div class="col-sm-5 pt-xl-5 pt-sm-2 pl-3">
                                 <p class="detail-text text-bold text-center">Entertainment</p>
@@ -1042,10 +1019,10 @@
                     </a>
                 </div>
                 <div class="col-sm-4 col-6 mb-3">
-                    <a class="" href="{{url('category_travel')}}">
+                    <a class="" href="{{ url('/category_travel') }}">
                         <div class="row">
                             <div class="col-sm-7"><img
-                                    src="{{asset('assets_frontend/images/courtyard-rural-house-building-with-grass-trees%202.jpg')}}"
+                                    src="{{ asset('assets_frontend/images/courtyard-rural-house-building-with-grass-trees%202.jpg') }}"
                                     class="card-img-top-travel w-100" alt="..."></div>
                             <div class="col-sm-5 pt-xl-5 pt-sm-2 pl-3">
                                 <p class="detail-text text-bold text-center">Private Tour</p>
@@ -1062,13 +1039,13 @@
     <div class="">
         <!-- reviews -->
         <div class="bg-orange-light">
-            <div class="head-text-index">Review from travelers</div>
+            <div class="head-text-index">@lang('lang.review_from_travelers')</div>
             <div class="line-bottom-head-text"></div>
             <div class="row my-4">
                 <div class="col-sm-4">
                     <div class="reviewimg-box mb-2">
                         <div class="fitter-review">
-                            <img src="{{asset('assets_frontend/images/4.2-place.jpg')}}" class="w-100">
+                            <img src="{{ asset('assets_frontend/images/4.2-place.jpg') }}" class="w-100">
                         </div>
                         <div class="review-text">
                             <p class="name-text text-white">poolvilla</p>
@@ -1084,7 +1061,7 @@
                 <div class="col-sm-4">
                     <div class="reviewimg-box mb-2">
                         <div class="fitter-review">
-                            <img src="{{asset('assets_frontend/images/3-place.jpg')}}" class="w-100">
+                            <img src="{{ asset('assets_frontend/images/3-place.jpg') }}" class="w-100">
                         </div>
                         <div class="review-text">
                             <p class="name-text text-white">poolvilla</p>
@@ -1100,7 +1077,7 @@
                 <div class="col-sm-4">
                     <div class="reviewimg-box mb-2">
                         <div class="fitter-review">
-                            <img src="{{asset('assets_frontend/images/recomment%20(1).jpg')}}" class="w-100">
+                            <img src="{{ asset('assets_frontend/images/recomment%20(1).jpg') }}" class="w-100">
                         </div>
                         <div class="review-text">
                             <p class="name-text text-white">poolvilla</p>
@@ -1123,11 +1100,15 @@
 </html>
 <script>
     $(function () {
-        $("#datepicker").datepicker();
+        $("#datepicker").datepicker({
+            dateFormat: 'dd/mm/yy',
+        });
     });
 
     $(function () {
-        $("#datepicker2").datepicker();
+        $("#datepicker2").datepicker({
+            dateFormat: 'dd/mm/yy',
+        });
     });
 
 </script>
