@@ -24,7 +24,7 @@ class LoginController extends Controller
         }
           Auth::guard('web')->login($member);
           if(auth::guard('web')->user()->status == 1){
-            return redirect()->to('/index')->with('success','Success!');
+            return redirect()->to('/')->with('success','Success!');
           }
           else{
               return redirect()->back()->with('warning','Permission denied'); 
@@ -35,6 +35,6 @@ class LoginController extends Controller
     {
         Auth::guard('web')->logout();
         $request->session()->invalidate();
-        return redirect("/index");
+        return redirect("/");
     }
 }

@@ -22,7 +22,7 @@
         </div>
         <div class="col-sm-4">
             <div class="row">
-                <div class="col-6">
+                <div class="col-7">
                     <ul class="">
                         <li class="nav-link non-scroll"><a href="{{ url('/') }}">@lang('lang.home')</a></li>
                         <li class="nav-link non-scroll"><a href="{{ url('/tourist_attraction') }}">@lang('lang.tourist_attraction')</a></li>

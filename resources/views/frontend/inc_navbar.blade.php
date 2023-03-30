@@ -2,51 +2,78 @@
     <div class="for-destop">
         <div class="navigation non-scroll">
             <div class="container">
-
                 <div class="row justify-content-between">
                     <div class="col-xl-4 col-2">
-                        <a href="{{url('index')}}">
-                            <img src="{{asset('assets_frontend/images/logo.svg')}}" class="logo">
+                        <a href="{{ url('/') }}">
+                            <img src="{{ asset('assets_frontend/images/logo.svg') }}" class="logo">
                         </a>
                     </div>
                     <div class="col-xl-8 col-10">
                         <!-- when-login-->
                         <ul class="nav-list">
-                            <li class="nav-link non-scroll"><a href="{{url('index')}}">Home</a>
+                            <li class="nav-link non-scroll"><a href="{{ url('/') }}">@lang('lang.home')</a>
                             </li>
-                            <li class="nav-link non-scroll"><a href="{{url('tourist-attraction')}}">Tourist
-                                    Attraction</a></li>
+                            <li class="nav-link non-scroll"><a href="{{ url('/tourist-attraction') }}">@lang('lang.tourist_attraction')</a></li>
                             <li class="nav-link non-scroll">
                                 <div class="dropdown profile">
                                     <button class="dropbtn profile"><i
-                                            class="fas fa-user-circle name-text me-2 text-orange"></i>Welcome,@if(Auth::user()!=null)
-                                        {{Auth::user()->firstname}} @else Elle @endif</button>
-                                    @if (Auth::user() != '')
+                                            class="fas fa-user-circle name-text me-2 text-orange"></i>@lang('lang.welcome'),@if(Auth::guard('web')->user() != null)
+                                        {{ Auth::guard('web')->user()->firstname }} @else Elle @endif</button>
+                                    @if(Auth::guard('web')->user() != '')
                                     <div class="dropdown-content profile">
-                                        <a href="{{url('profile')}}">My Profile</a>
-                                        <a href="{{url('mybooking')}}">My Booking</a>
-                                        <a href="{{ url('logout') }}">Log out</a>
+                                        <a href="{{ url('/profile') }}">@lang('lang.my_profile')</a>
+                                        <a href="{{ url('/mybooking') }}">@lang('lang.my_booking')</a>
+                                        <a href="{{ url('/logout') }}">@lang('lang.log_out')</a>
                                     </div>
                                     @else
                                     <div class="dropdown-content profile">
-                                        <a href="{{url('signin')}}">Sign in</a>
+                                        <a href="{{ url('/signin') }}">@lang('lang.sign_in')</a>
                                     </div>
                                     @endif
                                 </div>
                             </li>
+                            @if(Session::get('locale') == 'en')
                             <li class="nav-link non-scroll">
                                 <div class="dropdown">
-                                    <button class="btn btn-lang dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                    <a class="btn btn-lang dropdown-toggle" type="button" href="{{ url('/change-language/en') }}" id="dropdownMenuButton1"
                                         data-bs-toggle="dropdown" aria-expanded="false">
-                                        <img src="{{asset('assets_frontend/images/lang-en.png')}}" class="lang">EN
-                                    </button>
+                                        <img src="{{ asset('assets_frontend/images/lang-en.png') }}" class="lang">@lang('lang.en')
+                                    </a>
                                     <ul class="dropdown-menu lang" aria-labelledby="dropdownMenuButton1">
-                                        <li><a class="dropdown-item" href="#"><img
-                                                    src="{{asset('assets_frontend/images/090-thailand-1.png')}}"
-                                                    class="lang">ไทย</a></li>
+                                        <li><a class="dropdown-item" href="{{ url('/change-language/th') }}"><img
+                                                    src="{{ asset('assets_frontend/images/090-thailand-1.png') }}"
+                                                    class="lang">@lang('lang.th')</a></li>
                                     </ul>
                                 </div>
                             </li>
+                            @elseif(Session::get('locale') == 'th')
+                            <li class="nav-link non-scroll">
+                                <div class="dropdown">
+                                    <a class="btn btn-lang dropdown-toggle" type="button" href="{{ url('/change-language/th') }}" id="dropdownMenuButton1"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img src="{{ asset('assets_frontend/images/090-thailand-1.png') }}" class="lang">@lang('lang.th')
+                                    </a>
+                                    <ul class="dropdown-menu lang" aria-labelledby="dropdownMenuButton1">
+                                        <li><a class="dropdown-item" href="{{ url('/change-language/en') }}">
+                                            <img src="{{ asset('assets_frontend/images/lang-en.png') }}" class="lang">@lang('lang.en')</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            @elseif(Session::get('locale') == '' || Session::get('locale') == null)
+                            <li class="nav-link non-scroll">
+                                <div class="dropdown">
+                                    <a class="btn btn-lang dropdown-toggle" type="button" href="{{ url('/change-language/en') }}" id="dropdownMenuButton1"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img src="{{ asset('assets_frontend/images/lang-en.png') }}" class="lang">@lang('lang.en')
+                                    </a>
+                                    <ul class="dropdown-menu lang" aria-labelledby="dropdownMenuButton1">
+                                        <li><a class="dropdown-item" href="{{ url('/change-language/th') }}"><img
+                                                    src="{{ asset('assets_frontend/images/090-thailand-1.png') }}"
+                                                    class="lang">@lang('lang.th')</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            @endif
                         </ul>
                         <!-- when-login-->
                     </div>
@@ -63,8 +90,8 @@
                             class="fas fa-bars text-orange"></i></button>
                 </div>
                 <div class="col-4">
-                    <a href="{{url('index')}}">
-                        <img src="{{asset('assets_frontend/images/logo.svg')}}" class="logo">
+                    <a href="{{ url('/') }}">
+                        <img src="{{ asset('assets_frontend/images/logo.svg') }}" class="logo">
                     </a>
                 </div>
             </div>
@@ -86,27 +113,25 @@
                     <!-- non-login-->
                     <!-- when-login-->
                     <ul class="nav-list">
-                        <li class="nav-link- text-orange"> Welcome,@if(Auth::user()!=null)
-                            {{Auth::user()->firstname}} @else Elle @endif</li>
-                        <li class="nav-link-"><a href="{{url('index')}}"><i
-                                    class="fas fa-home text-orange pe-2"></i>Home</a>
+                        <li class="nav-link- text-orange"> @lang('lang.welcome'),@if(Auth::guard('web')->user() != null)
+                            {{ Auth::guard('web')->user()->firstname }} @else Elle @endif</li>
+                        <li class="nav-link-"><a href="{{ url('/') }}"><i
+                                    class="fas fa-home text-orange pe-2"></i>@lang('lang.home')</a>
                         </li>
-                        <li class="nav-link-"><a href="{{url('tourist-attraction')}}"><i
-                                    class="fas fa-place-of-worship text-orange pe-2"></i>Tourist Attraction</a></li>
-                        @if (Auth::user() != '')
-                        <li class="nav-link-"> <a href="{{url('profile')}}"><i
-                                    class="far fa-id-card text-orange pe-2"></i>My
-                                Profile</a></li>
-                        <li class="nav-link-"><a href="{{url('mybooking')}}"><i
-                                    class="fas fa-umbrella-beach text-orange pe-2"></i>My Booking</a></li>
-                        <li class="nav-link-"><a href="{{url('review')}}"><i class="far fa-star text-orange pe-2"></i>My
-                                Reviews</a></li>
-                        <li class="nav-link-"><a href="{{ url('logout') }}"><i
-                                    class="fas fa-door-open text-orange pe-2"></i>Log out</a>
+                        <li class="nav-link-"><a href="{{ url('/tourist-attraction') }}"><i
+                                    class="fas fa-place-of-worship text-orange pe-2"></i>@lang('lang.tourist_attraction')</a></li>
+                        @if(Auth::guard('web')->user() != '')
+                        <li class="nav-link-"> <a href="{{ url('/profile') }}"><i
+                                    class="far fa-id-card text-orange pe-2"></i>@lang('lang.my_profile')</a></li>
+                        <li class="nav-link-"><a href="{{ url('/mybooking') }}"><i
+                                    class="fas fa-umbrella-beach text-orange pe-2"></i>@lang('lang.my_booking')</a></li>
+                        <li class="nav-link-"><a href="{{ url('/review') }}"><i class="far fa-star text-orange pe-2"></i>@lang('lang.my_reviews')</a></li>
+                        <li class="nav-link-"><a href="{{ url('/logout') }}"><i
+                                    class="fas fa-door-open text-orange pe-2"></i>@lang('lang.log_out')</a>
                         </li>
                         @else
-                        <li class="nav-link-"><a href="{{url('signin')}}"><i
-                                    class="fas fa-door-open text-orange pe-2"></i>Sign in</a>
+                        <li class="nav-link-"><a href="{{ url('/signin') }}"><i
+                                    class="fas fa-door-open text-orange pe-2"></i>@lang('lang.sign_in')</a>
                         @endif
                     </ul>
                     <!-- when-login-->
@@ -114,5 +139,4 @@
             </div>
         </div>
     </div>
-
 </nav>

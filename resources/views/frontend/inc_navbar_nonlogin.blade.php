@@ -2,36 +2,55 @@
     <div class="for-destop">
         <div class="navigation non-scroll">
     <div class="container">
-        
             <div class="row justify-content-between">
           <div class="col-xl-4 col-2">
-             <a href="{{url('index')}}">
-                <img src="{{asset('assets_frontend/images/logo.svg')}}" class="logo">
+             <a href="{{ url('/') }}">
+                <img src="{{ asset('assets_frontend/images/logo.svg') }}" class="logo">
              </a>
           </div>
             <div class="col-xl-8 col-10">
             <!-- non-login-->
                 <ul class="nav-list">
-                    <li class="nav-link"><a href="{{url('index')}}">Home</a>
-                     </li>
-                    <li class="nav-link "><a href="{{url('tourist-attraction')}}">Tourist Attraction</a></li>
-                    <li class="nav-link "><a href="{{url('register')}}">Register</a>
-                     </li>
-                     <li class="nav-link "><a href="{{url('signin')}}"><i class="fas fa-sign-in-alt text-orange pe-2"></i>Sign in</a>
-                     </li>
-                    <li class="nav-link">
+                  <li class="nav-link"><a href="{{ url('/') }}">@lang('lang.home')</a></li>
+                  <li class="nav-link"><a href="{{ url('/tourist-attraction') }}">@lang('lang.tourist_attraction')</a></li>
+                  <li class="nav-link"><a href="{{ url('/register') }}">@lang('lang.register')</a></li>
+                  <li class="nav-link"><a href="{{ url('/signin') }}"><i class="fas fa-sign-in-alt text-orange pe-2"></i>@lang('lang.sign_in')</a></li>
+                  @if(Session::get('locale') == 'en')
+                  <li class="nav-link">
                     <div class="dropdown">
-                      <button class="btn btn-lang dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="{{asset('assets_frontend/images/lang-en.png')}}" class="lang">EN
-                      </button>
+                      <a class="btn btn-lang dropdown-toggle" type="button" href="{{ url('/change-language/en') }}" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="{{ asset('assets_frontend/images/lang-en.png') }}" class="lang">@lang('lang.en')
+                      </a>
                       <ul class="dropdown-menu lang" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="#"><img src="{{asset('assets_frontend/images/090-thailand-1.png')}}" class="lang">ไทย</a></li>
+                        <li><a class="dropdown-item" href="{{ url('/change-language/th') }}"><img src="{{ asset('assets_frontend/images/090-thailand-1.png') }}" class="lang">@lang('lang.th')</a></li>
                       </ul>
                     </div>    
-                </li>
-                  </ul>
+                  </li>
+                  @elseif(Session::get('locale') == 'th')
+                  <li class="nav-link">
+                    <div class="dropdown">
+                      <a class="btn btn-lang dropdown-toggle" type="button" href="{{ url('/change-language/th') }}" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="{{ asset('assets_frontend/images/090-thailand-1.png') }}" class="lang">@lang('lang.th')
+                      </a>
+                      <ul class="dropdown-menu lang" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="{{ url('/change-language/en') }}"><img src="{{ asset('assets_frontend/images/lang-en.png') }}" class="lang">@lang('lang.en')</a></li>
+                      </ul>
+                    </div>    
+                  </li>
+                  @elseif(Session::get('locale') == '' || Session::get('locale') == null)
+                  <li class="nav-link">
+                    <div class="dropdown">
+                      <a class="btn btn-lang dropdown-toggle" type="button" href="{{ url('/change-language/en') }}" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="{{ asset('assets_frontend/images/lang-en.png') }}" class="lang">@lang('lang.en')
+                      </a>
+                      <ul class="dropdown-menu lang" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="{{ url('/change-language/th') }}"><img src="{{ asset('assets_frontend/images/090-thailand-1.png') }}" class="lang">@lang('lang.th')</a></li>
+                      </ul>
+                    </div>    
+                  </li>
+                  @endif
+                </ul>
             <!-- non-login-->
-            
             </div>
         </div>
             </div>
@@ -44,8 +63,8 @@
                     <button class="btn btn-nav-mobile" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop"><i class="fas fa-bars text-orange"></i></button>
                 </div>
                 <div class="col-4">
-                        <a href="{{url('index')}}">
-                            <img src="{{asset('assets_frontend/images/logo.svg')}}" class="logo">
+                        <a href="{{ url('/') }}">
+                            <img src="{{ asset('assets_frontend/images/logo.svg') }}" class="logo">
                         </a>
                 </div>
             </div>
@@ -57,10 +76,10 @@
               <div class="offcanvas-body">
                     <!-- non-login-->
                     <ul class="nav-list">
-                        <li class="nav-link-"><a href="{{url('index')}}"><i class="fas fa-home text-orange pe-2"></i>Home</a></li>
-                        <li class="nav-link-"><a href="{{url('tourist-attraction')}}"><i class="fas fa-place-of-worship text-orange pe-2"></i>Tourist Attraction</a></li>
-                        <li class="nav-link-"><a href="{{url('register')}}"><i class="fas fa-user-plus text-orange pe-2"></i>Register</a></li>
-                        <li class="nav-link-"><a href="{{url('signin')}}"><i class="fas fa-sign-in-alt text-orange pe-2"></i>Sign in</a></li>
+                        <li class="nav-link-"><a href="{{ url('/') }}"><i class="fas fa-home text-orange pe-2"></i>@lang('lang.home')</a></li>
+                        <li class="nav-link-"><a href="{{ url('/tourist-attraction') }}"><i class="fas fa-place-of-worship text-orange pe-2"></i>@lang('lang.tourist_attraction')</a></li>
+                        <li class="nav-link-"><a href="{{ url('/register') }}"><i class="fas fa-user-plus text-orange pe-2"></i>@lang('lang.register')</a></li>
+                        <li class="nav-link-"><a href="{{ url('/signin') }}"><i class="fas fa-sign-in-alt text-orange pe-2"></i>@lang('lang.sign_in')</a></li>
                     </ul>
                 <!-- non-login-->
                 <!-- when-login-->

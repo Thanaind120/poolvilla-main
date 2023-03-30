@@ -11,7 +11,7 @@
                     <div class="col-xl-8 col-10">
                         <!-- non-login-->
                         <ul class="nav-list">
-                            @if(Auth::user() != '')
+                            @if(Auth::guard('web')->user() != '')
                             <li class="nav-link scroll"><a></a></li>
                             <li class="nav-link scroll"><a></a></li>
                             <li class="nav-link scroll"><a href="{{ url('/') }}">@lang('lang.home')</a></li>
@@ -20,8 +20,8 @@
                             <li class="nav-link scroll">
                                 <div class="dropdown profile">
                                     <button class="btn btn-lang dropdown-toggle"><i
-                                            class="fas fa-user-circle name-text me-2 text-orange"></i>@lang('lang.welcome'),@if(Auth::user() != null)
-                                        {{ Auth::user()->firstname }} @else  @endif</button>
+                                            class="fas fa-user-circle name-text me-2 text-orange"></i>@lang('lang.welcome'),@if(Auth::guard('web')->user() != null)
+                                        {{ Auth::guard('web')->user()->firstname }} @else Elle @endif</button>
                                     <div class="dropdown-content profile">
                                         <a href="{{ url('/profile') }}">@lang('lang.my_profile')</a>
                                         <a href="{{ url('/mybooking') }}">@lang('lang.my_booking')</a>
@@ -126,7 +126,7 @@
                 <div class="offcanvas-body">
                     <!-- non-login-->
                     <ul class="nav-list">
-                        @if(Auth::user() != '')
+                        @if(Auth::guard('web')->user() != '')
                         <li class="nav-link"><a href="{{ url('/') }}"><i
                                     class="fas fa-home text-orange pe-2"></i>@lang('lang.home')</a>
                         </li>
